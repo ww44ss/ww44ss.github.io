@@ -1,6 +1,6 @@
 ww44ss.github.io
 ================
-My github.io repository
+My github.io repository  
 
-MLCoursera.html is the Coursera JHSU Machine Learning Class Project.
-Crime\_Vizualization\_Challenge\_r3.html is a quick analysis of SF crime data
+1. MLCoursera.html _is the Coursera JHSU Machine Learning Class Project._  
+2. Crime\_Vizualization\_Challenge\_r3.html _is a quick analysis of SF crime data_  
