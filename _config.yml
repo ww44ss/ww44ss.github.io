@@ -1,0 +1,32 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Winston's Blog
+locale: en_US
+description: My blog about data science, R programming, and interesting data visualization around the web.
+search: true
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+
+mathjax: true
+comments: true
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+
+owner:
+    name: Winston Saunders
+    avatar: tactical.001.jpg
+    disqus-shortname: tactical.data
+    twitter: WinstonOnEnergy
+    facebook: #username
+    github_username:  ww44ss
+
+# Build settings
+markdown: kramdown
