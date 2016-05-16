@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title: Winston’s Data Science Blog
+title: Winston’s Data Blog
 locale: en_US
-description: A roadmap of my data science explorations.
+description: A personal roadmap of data science exploration.
 logo: site-logo.png
 search: true
 url: http://winstonasaunders.com
