@@ -1,11 +1,11 @@
 # Site wide configuration
 
-title: Site Title
+title: Winston’s Data Science Blog
 locale: en_US
-description: Describe your website here.
+description: A roadmap of my data science explorations.
 logo: site-logo.png
 search: true
-url: http://localhost:4000
+url: http://winstonasaunders.com
 
 # Jekyll configuration
 
@@ -48,16 +48,16 @@ titlecase: true
 
 # Site owner
 owner:
-  name: Your Name
+  name: Winston Saunders
   avatar: bio-photo.jpg
-  email: you@email.com
+  email: winstonasaunders@gmail.com
   disqus-shortname:
-  twitter: #username
+  twitter: WinstonOnEnergy
   facebook: #username
-  github: #username
+  github: ww44ss
   stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
-  instagram: #username
+  linkedin: WinstonSaunders
+  instagram: W4S
   flickr: #username
   tumblr: #username
   pinterest: #username
