@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title: Data ExploR
+title: Data Explorations
 locale: en_US
-description: A continual chain of explorations. Primarily Data Science. Primarily in R.
+description: A continual chain. Mostly Data Science. Mostly in R
 logo: site-logo.png
 search: true
 url: http://winstonasaunders.com
