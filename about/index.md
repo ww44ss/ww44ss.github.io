@@ -1,25 +1,29 @@
 ---
 layout: page
-title: About the Jekyll Theme
-excerpt: "So Simple is a responsive Jekyll theme for your words and images."
-modified: 2014-08-08T19:44:38.564948-04:00
+title: About Me
+excerpt: "Intro"
+modified: 2016-05-16
 image:
-  feature: so-simple-sample-image-4.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
+  feature: Sisters1.jpg
+  credit: WAS
+  
 ---
 
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the follow up to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes) --- by designer slash illustrator [Michael Rose](http://mademistakes.com).
+An experienced scientist and technology professional with a background in information security, data center technologies, business strategy and management, and data analytics, I am currently exploring the exciting world of data science.
+ 
+###Educational background
+My Ph.D research at Berkeley was on the physics and quantum-mechanical properties of nano-materials. I did postdoctoral research at the Ecole Polytechnique Fédérale de Lausanne (Switzerland) and Caltech. 
 
-## So Simple Theme is all about:
+###Professional Background
+From 1993, until I retired in 2016, I fulfilled a wide variety of professional roles at Intel, ranging from wafer processing technology, to supplier management, product development, data center energy efficiency, information security, and secure development lifecycle leadership.  
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page]({{ site.url }}/404.html) to get you started.
-* [Simple site search](https://github.com/christian-fei/Simple-Jekyll-Search)
-* Support for Disqus Comments
+####Current Interests
+I am currently interested in data science, having completed the Coursera Data Science curriculum in 2015. My interests in data science include Natural Language Processing, fraud detection, mapping and geo-spatial analysis, and data visualization. 
+
+
+_This website is based on the **So Simple Theme** --- by designer slash illustrator [Michael Rose](http://mademistakes.com)._
+
+
 
 <a markdown="0" href="{{ site.url }}/theme-setup" class="btn">Install So Simple Theme</a>
 
