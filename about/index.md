@@ -20,5 +20,3 @@ From 1993, until I retired in 2016, I fulfilled a wide variety of professional r
 __Current Interests__  
 My current passion is for data science, machine learning, and data visualization. Having completed the [Coursera Data Science](https://www.coursera.org/specializations/jhu-data-science) curriculum in 2015 I have independently pursued interests in data science including Natural Language Processing, fraud detection, mapping and geo-spatial analysis, and data visualization. 
 
-
-_This website is based on the **So Simple Theme** --- by [Michael Rose](http://mademistakes.com)._
