@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title: Interesting Data
+title: Data ExploR
 locale: en_US
-description: A personal roadmap of data science exploration.
+description: A continual chain of explorations. Primarily Data Science. Primarily in R.
 logo: site-logo.png
 search: true
 url: http://winstonasaunders.com
