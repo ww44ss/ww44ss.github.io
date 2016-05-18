@@ -1,16 +1,25 @@
 # Site navigation links
 
-- title: About
-  url: /about/
-
-- title: Articles
-  url: /articles/
-
 - title: Blog
   url: /blog/
 
-- title: Theme Setup
-  url: /theme-setup/
+- title: About
+  url: /about/
+
+- title: Resume
+  url: /resume/
+
+- title: Github
+  url: http://github.com/ww44ss
+
+- title: RPubs
+  url: http://rpubs.com/ww44ss
+
+- title: LinkedIn
+  url: http://www.linkedin.com/in/winstonsaunders
+  
+- title: Links
+  url: /resources/
 
 - title: Search
   url: /search/
