@@ -35,7 +35,7 @@ Board of Directors
 #### Intel Corporation
 
 ##### Technology Program Manager, Secure Guard Extensions, Data Center Group  
-Responsible for comprehensive technology planning, qualification, and ecosystem development synchronized to platform launch.
+Responsible for comprehensive technology planning, qualification, and ecosystem technology development synchronized to CPU platform launch.
 
 ##### Security and Privacy Leader, Data Center Group
 Responsible organization-wide Secure Development Lifecycle (SDL) execution and conformance for Data Center Group. 
@@ -44,7 +44,7 @@ Responsible organization-wide Secure Development Lifecycle (SDL) execution and c
 Drove an active program drive energy efficiency improvements to Intel's major server platforms. '
 	 
 ##### 90nm Communication Technology Program Manager  
-Corodinated silicon product development and qualification on a odified 90nm process techology across multiple business units and projects. 
+Corodinated silicon product development and qualification on a modified 90nm process techology across multiple business units and projects. 
 
 ##### Area Manager Manufacturing “Fab” Equipment Development  
 Led group responsible for equipment development and supplier management functions across etch, thin films, and metrology applications. 
