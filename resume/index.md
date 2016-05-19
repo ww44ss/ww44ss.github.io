@@ -1,3 +1,9 @@
+---
+layout: page
+title: Résumé
+search_omit: true
+---
+
 # Winston A. Saunders
 
 ## Summary  
@@ -28,13 +34,14 @@ Board of Directors
 
 ### Intel Corporation
 
-##### Technology Program Manager, Secure Guard Extensions.  
+##### Technology Program Manager, Secure Guard Extensions, Data Center Group  
 Responsible for comprehensive technology planning, qualification, and ecosystem development
 
-##### Security and Privacy Leader  
+##### Security and Privacy Leader, Data Center Group
 Responsible organization-wide Secure Development Lifecycle (SDL) definition and conformance for Data Center Group. 
 
-##### Director, Data Center Energy Efficiency Technology Initiatives  
+##### Director, Data Center Energy Efficiency Technology Initiatives
+
 	 
 ##### 90nm Communication Technology Program Manager  
 Silicon product development and qualification across multiple business units and projects. 
