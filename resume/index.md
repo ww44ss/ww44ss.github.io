@@ -41,17 +41,17 @@ Responsible for comprehensive technology planning, qualification, and ecosystem 
 Responsible organization-wide Secure Development Lifecycle (SDL) execution and conformance for Data Center Group. 
 
 ##### Director, Data Center Energy Efficiency Technology Initiatives
-Drove an active program drive energy efficiency improvements to Intel's major server platforms. '
+Drove an active program drive energy efficiency improvements to Intel's major server platforms. [Energy Efficent Servers, Gough, Steiner, Saunders (Springer 2015)](http://www.springer.com/us/book/9781430266372)
 	 
 ##### 90nm Communication Technology Program Manager  
 Corodinated silicon product development and qualification on a modified 90nm process techology across multiple business units and projects. 
 
 ##### Area Manager Manufacturing “Fab” Equipment Development  
-Led group responsible for equipment development and supplier management functions across etch, thin films, and metrology applications. 
+Led group responsible for equipment development and supplier management functions across etch, thin films, and metrology applications. [US Patent # 20060066842](http://www.google.com/patents/US20060066842)
 
 ### Caltech 
 Conducted research in Quantum Optics and Photonics
-Developed novel approach to Ion Propulsion (US Patent # 5239820)
+Developed novel approach to Ion Propulsion [US Patent # 5239820](http://www.google.com/patents/US5239820)
 Teaching (Quantum Mechanics)  
 
 ### Ecole Polytechnique Fédérale de Lausanne (EPFL), Switzerland.
