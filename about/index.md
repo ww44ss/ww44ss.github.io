@@ -9,7 +9,7 @@ image:
   
 ---
 
-I’m as passionate about data science and analytics as I am about skiing, cycling, and mountains. An experienced scientist and technology professional, my background includes data analytics, information security, data center technologies, customer support, business strategy, and organization management.  
+I’m as passionate about data science as I am about skiing, cycling, and mountains. An experienced scientist and technology professional, my background includes data analytics, information security, data center technologies, customer support, business strategy, and program, project, and organization management.  
  
 ### Current Interests 
 My current interest is in data science, machine learning, and data visualization. I’ve had a long interest in divining truth from data. Having completed the [Coursera Data Science](https://www.coursera.org/specializations/jhu-data-science) certification, I have since pursued independent data science research. Topics include Natural Language Processing, fraud detection, traffic safety analytics, mapping and geo-spatial analysis, and data visualization. 
