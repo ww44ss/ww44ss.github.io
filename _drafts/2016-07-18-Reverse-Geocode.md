@@ -39,14 +39,14 @@ I collected data on the reverse geocode times using the Google Maps API and the 
 geo_data <- google_reverse_geocode(location = c(as.numeric(x["lat"]), as.numeric(x["lon"])), key = google.key.txt)
 ~~~
 
-where `secret.key` is a private key generated from my Google Maps API account. 
+where `secret.key` is a private key from my Google Maps API account. 
 
 The time for each API call is taken as the `elapsed time` as measured by the `proc.time()` function, since this reflects the usage model (processing time is relatively short, throughput is limited by data across the network). It is this network time penalty which makes calls impractical for my application. 
 
 
 
 
-The data represent `r nrow(time.data)` separate API calls on `r (nrow(time.data)/400) %>% as.integer` different times of day at three different geo loactions (Portland, Bend, and Seattle). The distribution is clearly multimodal with peaks corresponding to different geo-locations. The Seattle-area had the fastest access, while Bend had the slowest.
+The data represent `r nrow(time.data)` separate API calls on '(nrow(time.data)/400) %>% as.integer` different times of day at three different geo loactions (Portland, Bend, and Seattle). The distribution is clearly multimodal with peaks corresponding to different geo-locations. The Seattle-area had the fastest access, while Bend had the slowest.
 Internet delays are the key performance limiter on data throughput. 
 
 
