@@ -23,4 +23,4 @@ I completed the [Coursera Data Science](https://www.coursera.org/specializations
 For most of my industrial career I worked at Intel Corporation, where I held a wide variety of technical, management, and leadership positions. Experience included: wafer-processing technology development, supplier management, product-development, data center and computing technology development, industry-consortium leadership, security and encryption technology development, and secure product-development lifecycle management.  
 
 ### Education  
-I completed a Ph.D in Physics at US Berkeley and did postdoctoral research at the Ecole Polytechnique Fédérale de Lausanne (Switzerland) and at Caltech. 
+I completed a Ph.D in Physics at UC Berkeley and did postdoctoral research at the Ecole Polytechnique Fédérale de Lausanne (Switzerland) and Caltech before joining Intel.
