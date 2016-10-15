@@ -26,9 +26,10 @@ The methods are similar to a [previous post on the VP debates](http://rpubs.com/
 
 ##ANALYSIS   
 
-First, we'll use the following libraries:
-`    library(dplyr)  
+{% highlight bash %}
+library(dplyr)  
 library(animation)  
 library(ggplot2)  
-library(tidytext)   
+library(tidytext)
+{% endhighlight %}
 `
