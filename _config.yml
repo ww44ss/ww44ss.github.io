@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title: Data ExploRations
+title: Data Blog
 locale: en_US
-description: A Continual Chain. Mostly Data Science. Mostly R.
+description: my data blog. mostly in R.
 logo: site-logo.png
 search: true
 url: http://winstonasaunders.com
