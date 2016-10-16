@@ -2,7 +2,7 @@
 
 title: Data Blog
 locale: en_US
-description: my blog about data analysis, visualization, and modeling. mostly in R.
+description: data analysis, visualization, and modeling. mostly in R.
 logo: site-logo.png
 search: true
 url: http://winstonasaunders.com
@@ -43,7 +43,7 @@ post_layout: post
 page_layout: page
 
 # Format titles with titlecase?
-titlecase: false
+titlecase: true
 
 
 # Site owner
