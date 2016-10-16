@@ -1,8 +1,8 @@
 # Site wide configuration
 
-title: Data Blog
+title: Data.Blog
 locale: en_US
-description: data analysis, visualization, and modeling. mostly in R.
+description: thoughts on data analysis, visualization, and modeling.
 logo: site-logo.png
 search: true
 url: http://winstonasaunders.com
