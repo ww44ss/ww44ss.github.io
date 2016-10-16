@@ -1,13 +1,13 @@
 // TYPOGRAPHY ================================================
-$base-font: 'trebuchet', sans-serif;
+$base-font: 'PT Sans', sans-serif;
 $heading-font: $base-font;
 $caption-font: $base-font;
 $code-font: 'source-code-pro', monospace;
 $alt-font: 'PT Sans', sans-serif;
-$title-font: 'trebuchet', sans-serif;
+$title-font: 'PT Sans', sans-serif;
 
-$doc-font-size: 16;
-$doc-line-height: 24;
+$doc-font-size: 14;
+$doc-line-height: 22;
 
 $border-radius: 4px;
 
@@ -21,7 +21,7 @@ body {
 
 // COLORS =====================================================
 $body-color         : #eff;
-$text-color         : #333;
+$text-color         : #444;
 $base-color         : #343434;    
 $comp-color         : spin($base-color, 180); 
 $border-color       : #ddd;
