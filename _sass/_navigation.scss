@@ -41,10 +41,10 @@
       margin-bottom: 0;
       padding: 6px 10px;
     }
-    color: $white;
+    color: #0aaf69;
     @include rounded(4px);
     &:hover {
-      background-color: lighten($black, 10);
+      background-color: #2c0e00;
     }
   }
 }
