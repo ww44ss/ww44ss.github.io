@@ -23,9 +23,9 @@
     float: left;
     list-style: none;
     text-align: center;
-    @include font-size(24,no);
+    @include font-size(20,no);
     text-transform: uppercase;
-    color: $white;
+    color: #22b574;
     @include media($medium) {
       @include font-size(14,no);
     }
