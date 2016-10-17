@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About.Me
+title: about.Me
 excerpt: "Intro"
 modified: 2016-10-10
 image:
