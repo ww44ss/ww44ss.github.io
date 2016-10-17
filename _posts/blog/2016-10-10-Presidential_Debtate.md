@@ -4,16 +4,16 @@ title: "Sentiment Analysis of the Oct 10 2016 Presidential Debate"
 modified: 
 categories: blog
 excerpt:
-tags: []
+tags: [debate]
 image:
 feature:
 date: 2016-10-12T08:08:50-04:00
 ---
 
-## SUMMARY   
+### SUMMARY   
 Can we learn anything about a debate and it's outcome from a "sentiment" analysis? 
 
-## DATA SOURCES AND METHODS   
+### DATA SOURCES AND METHODS   
 The text of the debate are downloaded from the [UCSB Presidency Project](http://www.presidency.ucsb.edu/debates.php). Transcripts were pasted into Apple Pages and stored as unformatted .txt files. No editing was done beyond that 
 
 The .txt files are made tidy by a separate __.R__ program which removes punctuation and annotation and then categorized by speaker. In practice this reduction required substantial fine tuning, so the program is stored as part of the analysis. The tidy data are stored as a .csv file which contains three columns:
@@ -26,7 +26,7 @@ The analysis follows methods hightlighted in recent posts by [David Robinson](ht
 The methods are similar to a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate), so I have suppressed most of the code from this printout.
 
 
-## ANALYSIS   
+### ANALYSIS   
 
 {% highlight bash %}
 library(dplyr)  

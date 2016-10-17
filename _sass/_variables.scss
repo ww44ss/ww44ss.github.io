@@ -1,12 +1,12 @@
 // TYPOGRAPHY ================================================
-$base-font: 'Signika', sans-serif;
+$base-font: 'Lora', serif;
 $heading-font: $base-font;
 $caption-font: $base-font;
 $code-font: 'source-code-pro', monospace;
 $alt-font: 'Signika', sans-serif;
 $title-font: 'Signika', sans-serif;
 
-$doc-font-size: 16;
+$doc-font-size: 17;
 $doc-line-height: 20;
 
 $border-radius: 4px;
@@ -24,7 +24,7 @@ $body-color         : #eef;
 $text-color         : #444;
 $base-color         : #343434;    
 $comp-color         : spin($base-color, 180); 
-$border-color       : #ddd;
+$border-color       : #dfd;
 $white              : #fff;
 $black              : #000;
 $accent-color       : $black;
