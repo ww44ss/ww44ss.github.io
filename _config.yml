@@ -1,6 +1,7 @@
 # Site wide configuration
 
-title: data analysis, visualization, and modelinglocale: en_US
+title: data analysis, visualization, and modeling
+locale: en_US
 description: winstonasaunders.com
 logo: site-logo.png
 search: true
