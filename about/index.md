@@ -1,11 +1,11 @@
 ---
 layout: page
-title: about.Me
+title: about.me
 excerpt: "Intro"
 modified: 2016-10-10
 image:
   feature: Sisters1.JPG
-  credit: WAS
+  credit: 
   
 ---
 
