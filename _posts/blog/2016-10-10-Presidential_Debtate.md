@@ -11,7 +11,7 @@ date: 2016-10-12T08:08:50-04:00
 ---
 
 ### SUMMARY   
-Can we learn anything about a debate and it's outcome from a "sentiment" analysis? 
+What can we learn about a debate and it's outcome from a "sentiment" analysis? This analysis focuses on the sentiment trend of the second of three 2016 Presidential Election Debates between Hillary Clinton and Donald Trump. 
 
 ### DATA SOURCES AND METHODS   
 The text of the debate are downloaded from the [UCSB Presidency Project](http://www.presidency.ucsb.edu/debates.php). Transcripts were pasted into Apple Pages and stored as unformatted .txt files. No editing was done beyond that 

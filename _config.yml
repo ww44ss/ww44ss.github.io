@@ -1,8 +1,7 @@
 # Site wide configuration
 
-title: Data.Blog
-locale: en_US
-description: thoughts on data analysis, visualization, and modeling.
+title: data analysis, visualization, and modelinglocale: en_US
+description: winstonasaunders.com
 logo: site-logo.png
 search: true
 url: http://winstonasaunders.com
