@@ -29,8 +29,8 @@ Here is an example of the data
 | 1   | RADDATZ    | ladies and gentlemen the republican nominee... |
 | 2   | COOPER     | thank you very much for being here we re going to begin with a question... |
 | 3   | AUDIENCE   | thank you and good evening the last debate could have been rated as mature... |
-| 5   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
-|=========
+| 4   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
+| []  |
 | 447   | RADDATZ  | please tune in on october th for the final presidential debate   |
 {: .table}
 
