@@ -36,7 +36,7 @@ Here is an example of the data
 {: .table}
 
           
-The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts. And also as used here [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
+The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
 
 
 ### ANALYSIS   
@@ -49,6 +49,18 @@ library(animation)
 library(ggplot2)  
 library(tidytext)
 {% endhighlight %}
+
+
+Before getting started I alsoe want to define the function `yo`  
+
+{% highlight bash %}
+yo <- function(x){x}
+## function yo returns its argument unchanged
+{% endhighlight %}
+
+yo is a trivially idempotent function used to punctuate a string of piped commands. It greatly simplifies debugging since individual lines can simply be commented out. When speaking, yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_. 
+
+#### reading data
 
 To read files I just search the directory
 
@@ -66,18 +78,11 @@ debate_text <- data_file %>% paste0(directory,.) %>%
     as_data_frame
 {% endhighlight %}
 
-
-
+#### computing dictionaries and sentiment
 
 We now begin processing by taking the text, unnesting the sentences, and removing stop words using the snowball lexicon.   
-Before getting started let's define the function `yo`  
 
-{% highlight bash %}
-yo <- function(x){x}
-## function yo returns its argument unchanged
-{% endhighlight %}
 
-_yo_ is a trivially idempotent function that punctuates a long string of piped commands. It greatly simplifies debugging on long chains (since individual lines can simply be commented out). Yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_. 
 
 {% highlight bash %}
 
@@ -116,5 +121,8 @@ yo
 
 nonzero_sentiment_debate_words <- debate_words_sentiments %>% filter(sentiment != 0)
 {% end highlight %}
+
+the data_frame nonzero_sentiment_debate_words
+
 
 
