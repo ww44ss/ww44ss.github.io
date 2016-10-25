@@ -91,7 +91,7 @@
   margin: 0;
   padding: 6px 20px;
   background-color: $black;
-  height: 44px;
+  height: 40px;
   @include rounded(0);
   @include media($medium) {
     display: none;
