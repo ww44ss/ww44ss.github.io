@@ -4,7 +4,7 @@ title: "Sentiment Analysis of the Oct 10 2016 Presidential Debate"
 modified: 
 categories: blog
 excerpt:
-tags: [R] [NLP] [sentiment] [ggplot]
+tags: [R]
 image:
 feature:
 date: 2016-10-12T08:08:50-04:00
@@ -36,8 +36,6 @@ Here is an example of the data
 
           
 The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
-
-
 
 
 
