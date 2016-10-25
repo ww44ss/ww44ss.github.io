@@ -44,7 +44,6 @@ I use the following packages for this analysis.
 
 {% raw %}
 library(dplyr)  
-## comment
 library(animation)  
 library(ggplot2)  
 library(tidytext)
