@@ -4,7 +4,7 @@ title: "Sentiment Analysis of the Oct 10 2016 Presidential Debate"
 modified: 
 categories: blog
 excerpt:
-tags: [debate]
+tags: [R] [NLP] [sentiment] [ggplot]
 image:
 feature:
 date: 2016-10-12T08:08:50-04:00
@@ -30,7 +30,7 @@ Here is an example of the data
 | 2   | COOPER     | thank you very much for being here we re going to begin with a question... |
 | 3   | AUDIENCE   | thank you and good evening the last debate could have been rated as mature... |
 | 4   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
-| []  |
+| +  |  + | + |
 | 447   | RADDATZ  | please tune in on october th for the final presidential debate   |
 {: .table}
 
@@ -38,7 +38,7 @@ Here is an example of the data
 The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
 
 
-### ANALYSIS   
+### ANALYSIS       
 
 I use the following packages for this analysis.
 
@@ -49,18 +49,20 @@ library(ggplot2)
 library(tidytext)
 {% endhighlight %}
 
+Before getting started I alsoe want to define the function  
 
-Before getting started I alsoe want to define the function `yo`  
+###
 
 {% highlight bash %}
-yo <- function(x){x}
-## function yo returns its argument unchanged
+yo
 {% endhighlight %}
 
-yo is a trivially idempotent function used to punctuate a string of piped commands. It greatly simplifies debugging since individual lines can simply be commented out. When speaking, yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_. 
+###
 
-#### reading data
+yo is a trivially idempotent function used to punctuate a string of piped commands. It greatly simplifies debugging since individual lines can simply be commented out. When speaking, yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_.   
 
+### ANALYSIS
+  
 To read files I just search the directory
 
 {% highlight bash %}
