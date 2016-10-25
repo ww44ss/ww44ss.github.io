@@ -66,8 +66,6 @@ yo is a trivially idempotent function used to punctuate a string of piped comman
 To read files I just search the directory
 
 {% highlight bash %}
-
-## get list of files 
 directory <- "/Users/IamIronMan/Documents/oct_2016_pres_debate/"
 list_of_files <- list.files(directory)
 
@@ -87,14 +85,11 @@ We now begin processing by taking the text, unnesting the sentences, and removin
 
 {% highlight bash %}
 
-## compute stop_words_list
 list_of_stop_words <- stop_words %>%
     filter(lexicon == "snowball") %>% 
     select(word) %>% 
     yo
 
-
-## create tidy df of debate words
 words_from_the_debate <- debate_text %>%
     unnest_tokens(word, text) %>%
     filter(!word %in% list_of_stop_words) %>% 
@@ -102,18 +97,16 @@ words_from_the_debate <- debate_text %>%
 {% endhighlight %}
 
 
-We create a "sentiment dictionary" from the information stored in the `tidytext` package and use a `left_join` to assicate words with the sentiment values.  
+We create a "sentiment dictionary" from the information stored in the  package and use a  to assicate words with the sentiment values.  
 
 {% highlight bash %}
 
-## compute sentiment dictionary
 word_sentiment_dict <- sentiments %>%
     filter(lexicon == "AFINN") %>%
     select(word, sentiment = score) %>%
     yo
 
-## get sentiment of individual words by joining data with dictionary using left_join
-## and then assigning NA's to zero
+
 debate_words_sentiments <-words_from_the_debate %>%
 left_join(word_sentiment_dict, by = "word") %>%
 mutate(sentiment = ifelse(is.na(sentiment), 0, sentiment)) %>%
