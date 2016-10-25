@@ -31,13 +31,12 @@ Here is an example of the data
 | 3   | AUDIENCE   | thank you and good evening the last debate could have been rated as mature... |
 | 5   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
 |=========
+| ...  |   ...           | ...    |
 | 447   | RADDATZ  | please tune in on october th for the final presidential debate   |
 {: .table}
 
           
-The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts.
-
-The methods are similar to a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
+The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts. And also as used here [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
 
 
 ### ANALYSIS   
@@ -56,11 +55,64 @@ To read files I just search the directory
 {% highlight bash %}
 
 ## get list of files 
-directory <- "/Users/winstonsaunders/Documents/oct_2016_pres_debate/"
+directory <- "/Users/IamIronMan/Documents/oct_2016_pres_debate/"
 list_of_files <- list.files(directory)
+
 ## filter for Second debate and the _tidy version of the text
-file_of_data <- list_of_files[grepl("_tidy", list_of_files) & grepl("Second", list_of_files)]
-debate_text <- read.csv(paste0(directory, file_of_data), stringsAsFactors = FALSE) %>% as_data_frame
+data_file <- list_of_files[grepl("_tidy", list_of_files) & grepl("Second", list_of_files)]
+
+debate_text <- data_file %>% paste0(directory,.) %>% 
+    read.csv(stringsAsFactors = FALSE) %>% 
+    as_data_frame
 {% endhighlight %}
 
-`
+
+
+
+We now begin processing by taking the text, unnesting the sentences, and removing stop words using the snowball lexicon.   
+Before getting started let's define the function `yo`  
+
+{% highlight bash %}
+yo <- function(x){x}
+## function yo returns x
+{% endhighlight %}
+
+`yo` is a trivially idempotent function that punctuates a long string of piped commands. It greatly simplifies debugging on long chains (since individual lines can simply be commented out). Yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_. 
+
+{% highlight bash %}
+## compute stop_words_list
+list_of_stop_words <- stop_words %>%
+    filter(lexicon == "snowball") %>% 
+    select(word) %>% 
+    yo
+
+
+## create tidy df of debate words
+words_from_the_debate <- debate_text %>%
+    unnest_tokens(word, text) %>%
+    filter(!word %in% list_of_stop_words) %>% 
+    yo
+{% endhighlight %}
+
+
+We create a "sentiment dictionary" from the information stored in the `tidytext` package and use a `left_join` to assicate words with the sentiment values.  
+
+{% highlight bash %}
+## compute sentiment dictionary
+word_sentiment_dict <- sentiments %>%
+    filter(lexicon == "AFINN") %>%
+    select(word, sentiment = score) %>%
+    yo
+
+## get sentiment of individual words by joining data with dictionary using left_join
+## and then assigning NA's to zero
+debate_words_sentiments <-words_from_the_debate %>%
+left_join(word_sentiment_dict, by = "word") %>%
+mutate(sentiment = ifelse(is.na(sentiment), 0, sentiment)) %>%
+mutate(sentiment = as.numeric(sentiment)) %>%
+yo
+
+nonzero_sentiment_debate_words <- debate_words_sentiments %>% filter(sentiment != 0)
+{% end highlight %}
+
+
