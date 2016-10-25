@@ -20,7 +20,7 @@ The .txt files are made tidy by a separate _.R_ program which cleans the text by
 In practice this reduction required substantial fine tuning, so the program is stored as part of the analysis. The tidy data are stored as a .csv file which contains three columns:    
 1. An index demarcating each text fragement.  
 2. The speaker's name.  
-3. The cleaned text.  
+3. The cleaned text.    
 
 Here is an example of the data
 
@@ -30,7 +30,7 @@ Here is an example of the data
 | 2   | COOPER     | thank you very much for being here we re going to begin with a question... |
 | 3   | AUDIENCE   | thank you and good evening the last debate could have been rated as mature... |
 | 4   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
-| +  |  + | + |
+| ========  |   |  |
 | 447   | RADDATZ  | please tune in on october th for the final presidential debate   |
 {: .table}
 
@@ -42,22 +42,23 @@ The methods used here closely follow those hightlighted in recent posts by [Davi
 
 I use the following packages for this analysis.
 
-{% highlight bash %}
+{% raw %}
 library(dplyr)  
+## comment
 library(animation)  
 library(ggplot2)  
 library(tidytext)
-{% endhighlight %}
+{% endraw %}
 
 Before getting started I alsoe want to define the function  
 
-###
+### A
 
 {% highlight bash %}
 yo
 {% endhighlight %}
 
-###
+### B
 
 yo is a trivially idempotent function used to punctuate a string of piped commands. It greatly simplifies debugging since individual lines can simply be commented out. When speaking, yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_.   
 
