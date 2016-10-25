@@ -23,7 +23,7 @@ The .txt files are made tidy by a separate __.R__ program which cleans the text 
 
 
 | X   | name       | text |
-|:----|:----------:|--------:|
+|:---:|-----------:|:--------|
 | 1   | RADDATZ    | ladies and gentlemen the republican nominee... |
 | 2   | COOPER     | thank you very much for being here we re going to begin with a question... |
 | 3   | AUDIENCE   | thank you and good evening the last debate could have been rated as mature... |
@@ -33,15 +33,6 @@ The .txt files are made tidy by a separate __.R__ program which cleans the text 
 {: .table}
 
           
-1 1  RADDATZ    ladies and gentlemen the republican nominee...
-2 2   COOPER    thank you very much for being here we re going to begin with a question...
-3 3 AUDIENCE    thank you and good evening the last debate could have been rated as mature...
-4 4  CLINTON    well thank you are you a teacher yes i think that that s a very good question...
-5 5  CLINTON    and i think it is very important for us to make clear to our children ...
-
-
-
-
 The analysis follows methods hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/).
 
 The methods are similar to a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate), so I have suppressed most of the code from this printout.
