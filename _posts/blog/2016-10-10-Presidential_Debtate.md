@@ -74,12 +74,13 @@ Before getting started let's define the function `yo`
 
 {% highlight bash %}
 yo <- function(x){x}
-## function yo returns x
+## function yo returns its argument unchanged
 {% endhighlight %}
 
-`yo` is a trivially idempotent function that punctuates a long string of piped commands. It greatly simplifies debugging on long chains (since individual lines can simply be commented out). Yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_. 
+_yo_ is a trivially idempotent function that punctuates a long string of piped commands. It greatly simplifies debugging on long chains (since individual lines can simply be commented out). Yo is emphasized like Aaron Paul's character used it to finish sentences in _Breaking Bad_. 
 
 {% highlight bash %}
+
 ## compute stop_words_list
 list_of_stop_words <- stop_words %>%
     filter(lexicon == "snowball") %>% 
@@ -98,6 +99,7 @@ words_from_the_debate <- debate_text %>%
 We create a "sentiment dictionary" from the information stored in the `tidytext` package and use a `left_join` to assicate words with the sentiment values.  
 
 {% highlight bash %}
+
 ## compute sentiment dictionary
 word_sentiment_dict <- sentiments %>%
     filter(lexicon == "AFINN") %>%
