@@ -68,53 +68,55 @@ yo is a trivially idempotent function used to punctuate a string of piped comman
 To read files I just search the directory
 
 {% highlight r %}
-directory <- "/Users/IamIronMan/Documents/oct_2016_pres_debate/"
+directory <- "/Users/Me/Documents/oct_2016_pres_debate/"
 list_of_files <- list.files(directory)
 
 ## filter for Second debate and the _tidy version of the text
-data_file <- list_of_files[grepl("_tidy", list_of_files) & grepl("Second", list_of_files)]
+data_file <- list_of_files[grepl("_tidy", list_of_files) & 
+                            grepl("Second", list_of_files)]
 
 debate_text <- data_file %>% paste0(directory,.) %>% 
-read.csv(stringsAsFactors = FALSE) %>% 
-as_data_frame
+    read.csv(stringsAsFactors = FALSE) %>% 
+    as_data_frame %>%
+    yo
 {% endhighlight %}
 
 We now begin processing by taking the text, unnesting the sentences, and removing stop words using the snowball lexicon.   
 
 {% highlight r %}
-## comment
+## create list of stop words
 list_of_stop_words <- stop_words %>%
-filter(lexicon == "snowball") %>% 
-select(word) %>% 
-yo
-
+    filter(lexicon == "snowball") %>% 
+    select(word) %>% 
+    yo
+## unnest the text words and remove stop words
 words_from_the_debate <- debate_text %>%
-unnest_tokens(word, text) %>%
-filter(!word %in% list_of_stop_words) %>% 
-yo
+    unnest_tokens(word, text) %>%
+    filter(!word %in% list_of_stop_words) %>% 
+    yo
 {% endhighlight %}
 
 
-We create a "sentiment dictionary" from the information stored in the  package and use a  to assicate words with the sentiment values.  
+We create a "sentiment dictionary" from the information stored in the  package and use a  to associate words with the sentiment values.  
 
 {% highlight r %}
 
 word_sentiment_dict <- sentiments %>%
-filter(lexicon == "AFINN") %>%
-select(word, sentiment = score) %>%
-yo
+    filter(lexicon == "AFINN") %>%
+    select(word, sentiment = score) %>%
+    yo
 
-
+## assign sentiment with left_join 
 debate_words_sentiments <-words_from_the_debate %>%
-left_join(word_sentiment_dict, by = "word") %>%
-mutate(sentiment = ifelse(is.na(sentiment), 0, sentiment)) %>%
-mutate(sentiment = as.numeric(sentiment)) %>%
-yo
+    left_join(word_sentiment_dict, by = "word") %>%
+    mutate(sentiment = ifelse(is.na(sentiment), 0, sentiment)) %>%
+    mutate(sentiment = as.numeric(sentiment)) %>%
+    yo
 
+## create list of non-zero sentiment words
 nonzero_sentiment_debate_words <- debate_words_sentiments %>% filter(sentiment != 0)
 {% endhighlight %}
 
-the data_frame nonzero_sentiment_debate_words
 
 
 
