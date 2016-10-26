@@ -4,7 +4,7 @@ title: "Sentiment Analysis of the Oct 10 2016 Presidential Debate"
 modified: 
 categories: blog
 excerpt:
-tags: [R]
+tags: [R] [sentiment] [NLP] 
 image:
 feature:
 date: 2016-10-12T08:08:50-04:00
@@ -31,6 +31,7 @@ Here is an example of the data
 | 3   | AUDIENCE   | thank you and good evening the last debate could have been rated as mature... |
 | 4   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
 | ========  |   |  |
+|(...)  | (...)  |(...)  |
 | 447   | RADDATZ  | please tune in on october th for the final presidential debate   |
 {: .table}
 
@@ -152,11 +153,11 @@ With this awkward function defined, we can now proceed to use the machinery of R
 {% highlight r %}
 ## compute sentiment of debate responses by regrouping and compute means and cumsums
 debate_sentiment <- debate_words_sentiments %>%
-group_by(X, name) %>%
-summarize(sentiment = sum(sentiment)) %>%
-group_by(name) %>%
-mutate(cumm_sent = decay_sum(sentiment, decay_rate = 0.02)) %>%
-yo
+    group_by(X, name) %>%
+    summarize(sentiment = sum(sentiment)) %>%
+    group_by(name) %>%
+    mutate(cumm_sent = decay_sum(sentiment, decay_rate = 0.02)) %>%
+    yo
 {% endhighlight %}
 
 The final step is to pull it all together into a plotable data frame
