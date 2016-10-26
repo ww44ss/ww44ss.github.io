@@ -40,11 +40,13 @@ The methods used here closely follow those hightlighted in recent posts by [Davi
 The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
 
 
-### ANALYSIS       
+### ANALYSIS  
+
+#### Getting Started
 
 I use the following packages for this analysis.
 
-{% highlight R %}
+{% highlight r %}
 library(dplyr)  
 library(animation)  
 library(ggplot2)  
@@ -53,6 +55,10 @@ library(tidytext)
 
 
 Before getting started I also want to define the function yo 
+
+{% highlight r %}
+yo <- function(x){x}
+{% endhighlight %}
 
 
 
