@@ -65,7 +65,7 @@ yo is a trivially idempotent function used to punctuate a string of piped comman
 
 #### computing dictionaries and sentiment
 
-To read files I just search the directory
+To read files I just search the directory for appropriate files and then filter the list.
 
 {% highlight r %}
 directory <- "/Users/Me/Documents/oct_2016_pres_debate/"
@@ -117,6 +117,60 @@ debate_words_sentiments <-words_from_the_debate %>%
 nonzero_sentiment_debate_words <- debate_words_sentiments %>% filter(sentiment != 0)
 {% endhighlight %}
 
+
+#### computing sentiment trends
+
+To look at the trend of the sentiment, we can create an exponentially damped cummulative sum function to apply to the data. The idea is that words have immediate punch when spoken, but their impact on overall sentiment wanes as time and words pass. The choice of damping factor, which is essentially arbitrary from an analytical standpoint, is made to capture "longer term trends" in the speech patterns. For most computations a factor around 0.02 worked well. 
+
+
+{% highlight r %}
+decay_sum <- function(x, decay_rate = 0.1421041) {
+    ## EXPONENTIALLY DAMPED CUMMULATIVE SUM
+    ## input:   x (a vector of length >1)
+    ##          decay_rate (exponential damping factor)
+    ## output:  decay_sum (a vector with the cummulatve sum)
+
+    ## create output vector
+    if (length(x) > 1) decay_sum <- 1.*(1:length(x))
+
+    ## initialize
+    decay_sum[1] <- x[1]*1.
+
+    ## compute the sum using a dreaded loop.
+    if (length(x) > 1) {
+        for (i in 2:length(x)){
+            decay_sum[i] <- x[i] + exp(-1.*decay_rate) * decay_sum[i-1]
+            }
+        }
+
+    return(decay_sum)
+}
+{% endhighlight %}
+
+With this awkward function defined, we can now proceed to use the machinery of R for a simple calculation
+
+{% highlight r %}
+## compute sentiment of debate responses by regrouping and compute means and cumsums
+debate_sentiment <- debate_words_sentiments %>%
+group_by(X, name) %>%
+summarize(sentiment = sum(sentiment)) %>%
+group_by(name) %>%
+mutate(cumm_sent = decay_sum(sentiment, decay_rate = 0.02)) %>%
+yo
+{% endhighlight %}
+
+The final step is to pull it all together into a plotable data frame
+
+{% highlight r %}
+## create data_frame for plotting. Since some X have no entry, need to fix those
+plot_df <- debate_sentiment %>% left_join(debate_text, by = c("X", "name")) %>%
+    select("X" = X, "name" = name, sentiment, cumm_sent, text) %>%
+    group_by(name) %>%
+    yo
+
+## suppress mediator and audience questioner text
+plot_df <- plot_df %>% filter(name == "TRUMP" | name == "CLINTON")
+{% endhighlight %}
 
 
 
