@@ -32,7 +32,6 @@ Here is an example of the data
 | 4   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
 | ========  |   |  |
 |(...)  | (...)  |  (...)|
-
 | 447   | RADDATZ  | please tune in on october th for the final presidential debate   |
 {: .table}
 
