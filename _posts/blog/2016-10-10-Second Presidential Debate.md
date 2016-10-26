@@ -269,19 +269,6 @@ Here is the animation.
 
 
 
-### End Notes   
-
-The gif animation offers some insight into the flow of the debate. Points of major conflict, such as the discussion about ISIS and Assad, are clearly highlighted by the analysis.   
-
-Some strengths:   
-* Gif animation provides a visual way to study teh ebb adn flow of the debate.    
-* It is visually appealing.     
-
-Some weaknesses:
-* The speed of the gif is very hard to adjust. Too fast and it is hard to follow. Too slow and it is frustrating. A manually adjustable rate might be better.    
-* Annotation is very hard to automate. Key words do not convey enough meaning. Full text is too much data. Need to think about this.     
-
-   
    
    
 
