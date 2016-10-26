@@ -3,7 +3,7 @@ layout: post
 title: "Sentiment Analysis of the Oct 10 2016 Presidential Debate"
 modified: 
 categories: blog
-excerpt:
+excerpt: "An animated view of word-sentiment in the Second 2016 Presidential Debate"
 tags: [R, sentiment, debate, NLP, animation]
 image:
 feature:
@@ -261,9 +261,6 @@ interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"),
 {% endhighlight %}
 
 Here is the animation. 
-
-
-<figure>
 
 
 <figure>
