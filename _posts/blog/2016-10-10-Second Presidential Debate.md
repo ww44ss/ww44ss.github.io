@@ -265,7 +265,6 @@ Here is the animation.
 
 <figure>
 <a href="/images/blog/blog_pres_debate.gif"><img src="/images/blog/blog_pres_debate.gif" alt="image"></a>
-<figcaption><a href="/images/blog/blog_pres_debate.gif" title="Debate Sentiment Gif">Debate Sentiment Gif</a>.</figcaption>
 </figure>
 
 
