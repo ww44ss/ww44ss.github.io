@@ -263,12 +263,12 @@ interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"),
 
 Here is the animation. 
 
-{% highlight html %}
+
 <figure class="half">
 <img src="/images/blog/blog_pres_debate.gif" alt="image">
 <figcaption> gif animation of the 2016 Presidential Debate</figcaption>
 </figure>
-{% endhighlight %}
+
 
 ### End Notes 
 
