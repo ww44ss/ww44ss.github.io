@@ -22,7 +22,7 @@ In practice this reduction required substantial fine tuning, so the program is s
 2. The speaker's name.  
 3. The cleaned text.    
 
-Here is an example of the data
+Here is an example of the cleaned and tidy data
 
 | X   | name       | text    |
 |:---:|-----------:|:--------|
@@ -36,7 +36,6 @@ Here is an example of the data
 {: .table}
 
           
-The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
 
 The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
 
@@ -269,16 +268,22 @@ Here is the animation.
 
 <figure>
 <a href="/images/blog/blog_pres_debate.gif"><img src="/images/blog/blog_pres_debate.gif" alt="image"></a>
-<figcaption><a href="/images/blog/blog_pres_debate.gif" title="Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr">Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr</a>.</figcaption>
+<figcaption><a href="/images/blog/blog_pres_debate.gif" title="Debate Sentiment Gif">Debate Sentiment Gif</a>.</figcaption>
 </figure>
-
-#<img src="/images/blog/blog_pres_debate.gif", alt="image", style="width:304px;">
-#<figcaption><a title="gif animation of the 2016 Presidential Debate">gif animation of the 2016 Presidential Debate</a>.</figcaption>
-#</figure>
 
 
 
 ### End Notes 
+
+The gif animation offers some insight into the flow of the debate. Points of major conflict, such as the discussion about ISIS and Assad, are clearly highlighted by the analysis.   
+
+Some strengths:  
+* Gif animation provides a visual way to study teh ebb adn flow of the debate. 
+* It is visually appealing.  
+
+Some weaknesses:
+* The speed of the gif is very hard to adjust. Too fast and it is hard to follow. Too slow and it is frustrating. A manually adjustable rate might be better.
+* Annotation is very hard to automate. Key words do not convey enough meaning. Full text is too much data. Need to think about this.  
 
 
 
