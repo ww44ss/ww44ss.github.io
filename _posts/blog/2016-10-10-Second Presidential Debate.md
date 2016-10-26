@@ -265,7 +265,7 @@ Here is the animation.
 
 
 <figure>
-<a> <img src="/images/blog/blog_pres_debate.gif", alt="image", style="width:304px;"> </a>
+<img src="/images/blog/blog_pres_debate.gif", alt="image", style="width:304px;">
 <figcaption><a title="gif animation of the 2016 Presidential Debate">gif animation of the 2016 Presidential Debate</a>.</figcaption>
 </figure>
 
