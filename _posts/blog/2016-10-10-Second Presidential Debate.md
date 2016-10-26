@@ -16,7 +16,7 @@ What can we learn about a debate and it's outcome from a "sentiment" analysis? T
 ### DATA SOURCES AND METHODS   
 The text of the debate are downloaded from the [UCSB Presidency Project](http://www.presidency.ucsb.edu/debates.php). Transcripts were cut from the web page, pasted into Apple Pages, and, without editing, stored as unformatted .txt files.   
 
-The .txt files are made tidy by a separate _.R_ program which cleans the text by removing punctuation and annotation and then categorizes by speaker in a tidy format, with the text being the data and both X and speaker names are variables.  
+The .txt files are made tidy by a separate `.R` program which cleans the text by removing punctuation and annotation and then categorizes by speaker in a tidy format, with the text being the data and both X and speaker names are variables.  
 In practice this reduction required substantial fine tuning, so the program is stored as part of the analysis. The tidy data are stored as a .csv file which contains three columns:    
 1. An index demarcating each text fragement.  
 2. The speaker's name.  
@@ -61,7 +61,7 @@ Before getting started I also want to define the function 'yo'
 yo <- function(x){x}
 {% endhighlight %}
 
-yo is a trivially idempotent function used to punctuate a string of piped commands. It greatly simplifies debugging long chains of pipes (since individual lines can simply be commented-out rather than modified). When speaking, yo is enunciated as Aaron Paul's character in _Breaking Bad_ would have done at the end of a sentence, yo.   
+`yo` is a trivially idempotent function used to punctuate a string of piped commands. It greatly simplifies debugging long chains of pipes (since individual lines can simply be commented-out rather than modified). When speaking, `yo` is enunciated as Aaron Paul's character in _Breaking Bad_ would have done at the end of a sentence, yo.   
 
 
 #### computing dictionaries and sentiment
@@ -185,7 +185,7 @@ gif_steps <- gif_steps[-1]
 
 {% endhighlight %}
 
-I had to manually add annotation.- couldn't find an easy way to automate that. Using just "high senitment" words, while interesting, doesn't really tell a narrative. Using the full text was just too long to read in a .GIF format. So in this case I have paraphrased the text. 
+To make the animation effectively communicate the flow of the debate, I had to manually add annotated text. I couldn't find an easy way to automate this. Using just "high senitment" words, while interesting, didn't tell a narrative, and using the full text was too much to read in a .GIF format. So in this case I have paraphrased the text. 
 
 This solution, while adequate here, has the problem that it doesn't scale (If I were to annotate each line it could, but that would take more time than I have). Here are the annotations. 
 
@@ -218,40 +218,48 @@ name = plot_df$name[plot_df$X %in% gif_steps])
 
 
 
-I added some features to the plot, so here is the new code.
+#### computing the animation
 
 
+The animation is computed using the `animation` package. There are a few gymnastics to get the colors of the titles to change with sentiment, but otherwise the plotting is straight-forward. Notice the addition of the vertical bar to the graph which shows the specific point in the debate. 
 
+{% highlight r %}
 saveGIF({
-for (j in 1:length(gif_steps)) {
-i <- gif_steps[j]
+    for (j in 1:length(gif_steps)) {
+        i <- gif_steps[j]
 
-## color code summary text
-if (plot_df$sentiment[plot_df$X == i] < 0) {
-title_color = "darkred"
-} else {
-title_color = "darkblue"
-}
+        ## color code summary text
+        if (plot_df$sentiment[plot_df$X == i] < 0) {
+        title_color = "darkred"
+        } else {
+        title_color = "darkblue"
+    }
 
-title_h = 0
+    title_h = 0
 
-print( 
-## the ggplot stack
-ggplot(plot_df, aes(x = X, y = sentiment, fill = name)) +
-geom_bar(stat = 'identity', alpha = 1., width = 2) +
-geom_line(data = plot_df%>% filter(X <= i), aes(x=X, y = 15*cumm_sent/max(abs(plot_df$cumm_sent))), size = 3, color = "grey20", alpha = 0.5) +
-xlim(range(plot_df$X)) +
-ylim(range(plot_df$sentiment)) +
-xlab("index") +
-ggtitle(paste0(plot_df$name[plot_df$X == i], ": ", ann_text$lab[j])) +
-facet_grid(name~.) +
-theme(plot.title = element_text(size = 14, hjust = title_h, color = title_color, face="bold"), legend.position = "bottom") +
-geom_vline(xintercept = i, color = "grey50")
+    print( 
+        ## the ggplot stack
+        ggplot(plot_df, aes(x = X, y = sentiment, fill = name)) +
+        geom_bar(stat = 'identity', alpha = 1., width = 2) +
+        geom_line(data = plot_df%>% filter(X <= i), 
+            aes(x=X, y = 15*cumm_sent/max(abs(plot_df$cumm_sent))), 
+            size = 3, color = "grey20", alpha = 0.5) +
+        xlim(range(plot_df$X)) +
+        ylim(range(plot_df$sentiment)) +
+        xlab("index") +
+        ggtitle(paste0(plot_df$name[plot_df$X == i], ": ", ann_text$lab[j])) +
+        facet_grid(name~.) +
+        theme(plot.title = element_text(size = 14, hjust = title_h, color = title_color, face="bold"), legend.position = "bottom") +
+        geom_vline(xintercept = i, color = "grey50")
 
-) 
-}
-}, interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"), ani.width = 700, ani.height = 450)
+        ) 
+    }
+}, 
+interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"), 
+                ani.width = 700, ani.height = 450)
 
-```
+{% endhighlight %}
+
+
 
 
