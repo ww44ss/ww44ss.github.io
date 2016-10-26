@@ -4,7 +4,7 @@ title: "Sentiment Analysis of the Oct 10 2016 Presidential Debate"
 modified: 
 categories: blog
 excerpt:
-tags: [R]
+tags: [R, sentiment, debate, NLP, animation]
 image:
 feature:
 date: 2016-10-12T08:08:50-04:00
@@ -173,9 +173,10 @@ plot_df <- debate_sentiment %>% left_join(debate_text, by = c("X", "name")) %>%
 plot_df <- plot_df %>% filter(name == "TRUMP" | name == "CLINTON")
 {% endhighlight %}
 
-#### animating the debate text
+#### creating debate text annotation 
 
-From here use the `animation` package functions to create the gif.
+
+The first part of annotating is selecting the specific text to use. For the fist choice, I simply selected for high sentiment lines.
 
 {% highlight r %}
 ## go back and add words for strong sentiment
@@ -259,6 +260,17 @@ interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"),
                 ani.width = 700, ani.height = 450)
 
 {% endhighlight %}
+
+Here is the animation. 
+
+{% highlight html %}
+<figure class="half">
+<img src="/images/blog/blog_pres_debate.gif" alt="image">
+<figcaption> gif animation of the 2016 Presidential Debate</figcaption>
+</figure>
+{% endhighlight %}
+
+### End Notes 
 
 
 
