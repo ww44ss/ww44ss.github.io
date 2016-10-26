@@ -54,7 +54,7 @@ library(tidytext)
 {% endhighlight %}
 
 
-Before getting started I also want to define the function yo
+Before getting started I also want to define the function 'yo'
 
 {% highlight r %}
 yo <- function(x){x}
@@ -82,7 +82,7 @@ as_data_frame
 We now begin processing by taking the text, unnesting the sentences, and removing stop words using the snowball lexicon.   
 
 {% highlight r %}
-
+## comment
 list_of_stop_words <- stop_words %>%
 filter(lexicon == "snowball") %>% 
 select(word) %>% 
