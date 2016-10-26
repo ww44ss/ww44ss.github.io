@@ -263,13 +263,13 @@ interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"),
 Here is the animation. 
 
 
-<figure>
-<a href="/images/blog/blog_pres_debate.gif"><img src="/images/blog/blog_pres_debate.gif" alt="image"></a>
-</figure>
+#<figure>
+#<a href="/images/blog/blog_pres_debate.gif"><img src="/images/blog/blog_pres_debate.gif" alt="image"></a>
+#</figure>
 
 
 
-### End Notes 
+### End Notes   
 
 The gif animation offers some insight into the flow of the debate. Points of major conflict, such as the discussion about ISIS and Assad, are clearly highlighted by the analysis.   
 
