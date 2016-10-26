@@ -37,6 +37,27 @@ Here is an example of the data
           
 The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
 
+The methods used here closely follow those hightlighted in recent posts by [David Robinson](http://varianceexplained.org/r/trump-tweets/) and [Julia Silge](http://juliasilge.com/blog/Life-Changing-Magic/) who looked at text sentiment analysis in both literary and political contexts as well as those used in a [previous post on the VP debates](http://rpubs.com/ww44ss/vp_debate).
+
+
+### ANALYSIS       
+
+I use the following packages for this analysis.
+
+{% highlight css %}
+#container {
+float: left;
+margin: 0 -240px 0 0;
+width: 100%;
+}
+{% endhighlight %}
+
+
+Before getting started I also want to define the function yo 
+
+
+
+###
 
 
 
