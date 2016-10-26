@@ -283,7 +283,10 @@ Some strengths:
 
 Some weaknesses:
 * The speed of the gif is very hard to adjust. Too fast and it is hard to follow. Too slow and it is frustrating. A manually adjustable rate might be better.
-* Annotation is very hard to automate. Key words do not convey enough meaning. Full text is too much data. Need to think about this.  
+* Annotation is very hard to automate. Key words do not convey enough meaning. Full text is too much data. Need to think about this.    
+
+  
+
 
 
 
