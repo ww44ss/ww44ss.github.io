@@ -31,7 +31,7 @@ Here is an example of the data
 | 3   | AUDIENCE   | thank you and good evening the last debate could have been rated as mature... |
 | 4   | CLINTON    | well thank you are you a teacher yes i think that that s a very good question... |
 | ========  |   |  |
-|(...)  | (...)  |  (...)|
+|(...)  |   | |
 | 447   | RADDATZ  | please tune in on october th for the final presidential debate   |
 {: .table}
 
@@ -173,5 +173,85 @@ plot_df <- debate_sentiment %>% left_join(debate_text, by = c("X", "name")) %>%
 plot_df <- plot_df %>% filter(name == "TRUMP" | name == "CLINTON")
 {% endhighlight %}
 
+#### animating the debate text
+
+From here use the `animation` package functions to create the gif.
+
+{% highlight r %}
+## go back and add words for strong sentiment
+gif_steps <- c(plot_df$X[plot_df$sentiment < -8 | plot_df$sentiment > 8 ], plot_df$X[nrow(plot_df)])
+## get rid of first line since it is usually parasitic
+gif_steps <- gif_steps[-1]
+
+{% endhighlight %}
+
+I had to manually add annotation.- couldn't find an easy way to automate that. Using just "high senitment" words, while interesting, doesn't really tell a narrative. Using the full text was just too long to read in a .GIF format. So in this case I have paraphrased the text. 
+
+This solution, while adequate here, has the problem that it doesn't scale (If I were to annotate each line it could, but that would take more time than I have). Here are the annotations. 
+
+
+{% highlight r %}
+annote = c("i have a very positive and optimistic view - the slogan of my campaign is stronger together",
+"i want to do things - making our inner cities better for the african american citizens that are so great", 
+"yes i m very embarrassed by it i hate it but it's locker room talk", "so this is who donald trump is - this is not who we are",
+"all you have to do is take a look at wikileaks", "after a year long investigation there is no evidence that anyone hacked the server", 
+"i want very much to save what works and is good about the affordable care act", 
+"the affordable care act was meant to try to fill the gap", 
+"there are children suffering in this catastrophic war", 
+"i will tell you very strongly when bernie sanders said she had bad judgment", 
+"one thing i'd do is get rid of carried interest", 
+"i understand the tax code better than anybody that's ever run for president",  
+"i don't like assad at all but assad is killing isis", 
+"i have generals and admirals who endorsed me", 
+"the greatest disaster trade deal in the history of the world", 
+"tweeting happens to be a modern day form of communication", 
+"justice scalia great judge died recently and we have a vacancy", 
+"i respect his children his children are incredibly able and devoted", 
+"i consider her statement about my children to be a very nice compliment", 
+"she doesn't quit she doesn't give up i respect that")
+
+
+ann_text <- data.frame(X = 220, sentiment = 20, lab = annote,
+name = plot_df$name[plot_df$X %in% gif_steps])
+
+{% endhighlight %}
+
+
+
+I added some features to the plot, so here is the new code.
+
+
+
+saveGIF({
+for (j in 1:length(gif_steps)) {
+i <- gif_steps[j]
+
+## color code summary text
+if (plot_df$sentiment[plot_df$X == i] < 0) {
+title_color = "darkred"
+} else {
+title_color = "darkblue"
+}
+
+title_h = 0
+
+print( 
+## the ggplot stack
+ggplot(plot_df, aes(x = X, y = sentiment, fill = name)) +
+geom_bar(stat = 'identity', alpha = 1., width = 2) +
+geom_line(data = plot_df%>% filter(X <= i), aes(x=X, y = 15*cumm_sent/max(abs(plot_df$cumm_sent))), size = 3, color = "grey20", alpha = 0.5) +
+xlim(range(plot_df$X)) +
+ylim(range(plot_df$sentiment)) +
+xlab("index") +
+ggtitle(paste0(plot_df$name[plot_df$X == i], ": ", ann_text$lab[j])) +
+facet_grid(name~.) +
+theme(plot.title = element_text(size = 14, hjust = title_h, color = title_color, face="bold"), legend.position = "bottom") +
+geom_vline(xintercept = i, color = "grey50")
+
+) 
+}
+}, interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"), ani.width = 700, ani.height = 450)
+
+```
 
 
