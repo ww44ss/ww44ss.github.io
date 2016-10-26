@@ -4,7 +4,7 @@ title: "Sentiment Analysis of the Oct 10 2016 Presidential Debate"
 modified: 
 categories: blog
 excerpt:
-tags: [R] [sentiment] [NLP] 
+tags: [R] 
 image:
 feature:
 date: 2016-10-12T08:08:50-04:00
