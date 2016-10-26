@@ -263,9 +263,7 @@ interval = 1.2, movie.name = paste0(directory,"sentiment_animation2.gif"),
 Here is the animation. 
 
 
-#<figure>
-#<a href="/images/blog/blog_pres_debate.gif"><img src="/images/blog/blog_pres_debate.gif" alt="image"></a>
-#</figure>
+
 
 
 
