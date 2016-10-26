@@ -44,12 +44,11 @@ The methods used here closely follow those hightlighted in recent posts by [Davi
 
 I use the following packages for this analysis.
 
-{% highlight css %}
-#container {
-float: left;
-margin: 0 -240px 0 0;
-width: 100%;
-}
+{% highlight R %}
+library(dplyr)  
+library(animation)  
+library(ggplot2)  
+library(tidytext)
 {% endhighlight %}
 
 
