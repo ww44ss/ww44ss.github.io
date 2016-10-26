@@ -265,9 +265,16 @@ Here is the animation.
 
 
 <figure>
-<img src="/images/blog/blog_pres_debate.gif", alt="image", style="width:304px;">
-<figcaption><a title="gif animation of the 2016 Presidential Debate">gif animation of the 2016 Presidential Debate</a>.</figcaption>
+
+
+<figure>
+<a href="/images/blog/blog_pres_debate.gif"><img src="/images/blog/blog_pres_debate.gif" alt="image"></a>
+<figcaption><a href="/images/blog/blog_pres_debate.gif" title="Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr">Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr</a>.</figcaption>
 </figure>
+
+#<img src="/images/blog/blog_pres_debate.gif", alt="image", style="width:304px;">
+#<figcaption><a title="gif animation of the 2016 Presidential Debate">gif animation of the 2016 Presidential Debate</a>.</figcaption>
+#</figure>
 
 
 
