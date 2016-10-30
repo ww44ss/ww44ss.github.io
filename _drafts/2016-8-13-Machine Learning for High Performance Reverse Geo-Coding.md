@@ -3,8 +3,8 @@ layout: post
 title: "Machine Learning for High Performance Reverse Geo-Coding"
 modified: 
 categories: blog
-excerpt: "Accelerating Reverse Geo-Coding perfomance ~ 10^4^ with Random Forests"
-tags: [R, geo-coding, Machine Learning]
+excerpt: "Machine Learning and Accelerating Reverse Geo-Coding Throughput by ~ 10^4"
+tags: [R, geo-coding, Machine Learning, oregon]
 image:
 feature:
 date: 2016-08-15T08:08:50-04:00
@@ -18,12 +18,14 @@ Reverse geo-coded GPS coordinates are useful in cases where GPS cordinates from,
 The purpose here to improve dramatically computation times while meeting high ( ~ 98% ) accuracy.  
 
 
-####A Note on Performance Measurements  
-Performance results are difficult communicate because they have context only within specific definitions. In this case I standardized data collection as much as possible to ensure some level of comparability. Each measurements was taken in a standardized run framework where the data were divided into training and test data sets and then the modeling and prediction steps were individually timed.   
+#### A Note on Performance Measurements  
+Performance results can be difficult communicate because they have context only within specific definitions. In this case I standardized data collection as much as possible to ensure a level of comparability. Each measurements was taken in a standardized run framework where the data were divided into training and test data sets and then the modeling and prediction steps were individually timed.   
 In some cases these times timing measurements differ slightly from those time observed when computations were done in loops with varying numbers of data points.   
 For the API calls I used elapsed-time measurements since these better reflect actual usage.
    
 ### ANALYSIS  
+
+This analysis has three parts, 
 
 #### getting started
 
@@ -35,7 +37,6 @@ library(dplyr)
 library(randomForest)
 library(googleway)
 library(choroplethrMaps)
-library(nnet)
 library(SDMTools)
 library(tidyr)
 library(stringr)
@@ -100,10 +101,6 @@ p <- ggplot(time.data, aes(x = time, fill = datetime, color = datetime)) +
 The median measured time per reverse geo-code data point is 176 msec with a 95th quantile of 275 msec, representing a thruput of 0.0057 points/msec.
 
 
-
-
-
-
 #### Point in Polygon
 
 Another method is the point in polygon (p-i-p) method. This method is inherently serial (each point must be checked for each boundary)and assumes the GPS boundaries of the counties are known. There are several packages on CRAN which can be used to compute p-i-p. In this case, the I used the `{SDMTools}` version. 
@@ -145,7 +142,7 @@ pip.oregon.county <- function(coords.x){
 }
 {% endhighlight %}
 
-
+With the function defined we can start production
 
 {% highlight r %}
 ## compute benchmark
@@ -160,9 +157,11 @@ easternmost <- max(state_county$long)
 westernmost <- min(state_county$long)
 
 ## generate random points
-coords <- data_frame( longitude = runif(number.to.compute, westernmost - 0.1, easternmost + 0.1), latitude = runif(number.to.compute, southernmost - 0.1, northernmost + 0.1) )
+coords <- data_frame(longitude = runif(number.to.compute, westernmost - 0.1, easternmost + 0.1), 
+            latitude = runif(number.to.compute, southernmost - 0.1, northernmost + 0.1) 
+            )
 
-GPS_data    
+## compute counties
 get.county.start.time <- proc.time()
 
     pip.county.result <- pip.oregon.county(coords.x)
@@ -171,7 +170,7 @@ get.county.time <- (proc.time() - get.county.start.time)[1]
 
 {% endhighlight %}
 
-By changing `number.tom.compute` we can get an idea of how the thruput of this method scales. The results of an experiment are shown below. 
+By changing `number.to.compute` we can get an idea of how the thruput of this method scales. The results of an experiment are shown below. 
 
 
 <figure>
@@ -180,11 +179,111 @@ By changing `number.tom.compute` we can get an idea of how the thruput of this m
 
 In practice, the P-i-P is much faster than the API call. Based on a stand-alone benchmark run, for 2000 points, the throughput is 2.26 points per msec - an improvement of roughly a factor of 400 over the API calls.
 
-Note, as the number of points gets large, the thruput (points/time) asymptotes to a constant value of roughly 5000 points/msec
+Note, as the number of points gets large, the thruput (points/time) asymptotes to a constant value of roughly 5.0 points/msec.
 
-#### random forest
+#### accuracy of the google API
+
+As a side experiment, I checked the consistency of the results from a Google API call versus the P-i-P method (which is, in principle, exact provided the political boundaries are accurate). Without going into detail here, the result was that taccuracy of the API, as graded against the P-i-P method, is 97.8%.
+
+<figure>
+<a href="/images/blog/blog_rf_rev_geo_pip_vs_api.png"><img src="/images/blog/blog_rf_rev_geo_pip_vs_api.png" alt="image"></a>
+</figure>
+
+You can see from the above map, most, but not all, of the disagreement points happend on or near boundaries. We'll see this pattern below as well, and it is to be expected.
+Deeper investigation is saved as a later activity. 
+
+#### Machine-Learning / random forest
+
+The problem of reverse geocoding, when you think of it, is really almost ideally solved as a multiple-classification tree problem. A series of questions resolving inequalities for latitude and longitide will quickly zero in on the right political boundary.
+
+Since high accuracy is a goal and the accuracy of a random forest improves with the number of training points,  the first step was to find out how many training cases are needed to meet a target of 98% accuracy.
+
+<figure>
+<a href="/images/blog/blog_rf_rev_geo_rf_acc_v_ntrain.png"><img src="/images/blog/blog_rf_rev_geo_rf_acc_v_ntrain.png" alt="image"></a>
+</figure>
+' 
+
+The above figure is produced by this code:
+
+
+
 
 {% highlight r %}
+## set number of points to graph
+n.accuracy.points <- 21
+
+## prebuild results data_frame
+rf.model.char.df <- data_frame("n" = 1:n.accuracy.points, 
+"n_train"= 1:n.accuracy.points, 
+"model_time" = 1.*1:n.accuracy.points, 
+"predict_time" = 1.*1:n.accuracy.points, 
+"accuracy" = 1.*1:n.accuracy.points, 
+"thruput" = 1.*1:n.accuracy.points, 
+"n_test" = 1.*1:n.accuracy.points)
+
+set.seed(8675309)
+
+#Step thru the accuracy points
+for (jj in 1:n.accuracy.points){
+
+    rf.model.char.df[jj,1] <- jj
+
+    coords.y <- coords
+
+    n_model <- 510+jj*731
+
+    rf.model.char.df[jj,2] <- n_model
+
+    ## split data sets
+    data.select <- sample(1:nrow(coords.y), n_model)
+    train.set <- coords.y[data.select,]
+
+
+    test.set <- coords.y[-data.select,]
+
+    rf.model.char.df[jj, 7] <- nrow(test.set)
+
+
+    #set.seed(8675309)
+
+    model.start.time <- proc.time()
+
+    rf.model <- randomForest(county ~., train.set, ntree=29)
+
+    rf.model.char.df[jj,3] <- 1000*(proc.time() - model.start.time)[1]
+
+    predict.start.time <- proc.time()
+    predicted.test <- predict(rf.model, test.set)
+
+    rf.model.char.df[jj,4] <- 1000*(proc.time() - predict.start.time)[1]
+
+    county.compare <- cbind("actual" = as.character(test.set$county), "model" = as.character(predicted.test)) %>% as.data.frame()
+    county.compare$accurate <- "yes"
+
+    ## get rid of factors again
+    county.compare$actual <- as.character(county.compare$actual)
+    county.compare$model <- as.character(county.compare$model)
+
+    county.compare$accurate[(county.compare[,1] != county.compare[,2])] <- "no"
+
+    plot.data <- cbind("lat" = test.set$lat, "lon" = test.set$lon, "accurate" = county.compare$accurate) %>% as.data.frame
+
+    plot.data$lat <- plot.data$lat %>% as.character %>% as.numeric
+    plot.data$lon <- plot.data$lon %>% as.character %>% as.numeric
+
+    plot.data$accurate <- as.factor(plot.data$accurate)
+
+
+    predict.sum<-table(plot.data$accurate)
+
+    ## calculated accuracy in %
+    model.accuracy <- (100*predict.sum[2]/(predict.sum[1]+predict.sum[2])) %>% round(3)
+
+    rf.model.char.df[jj,5] <- model.accuracy
+
+    rf.model.char.df[jj,6] <- n_model/rf.model.char.df[jj,4]
+
+}
 
 {% endhighlight %}
 
