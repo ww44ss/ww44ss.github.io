@@ -9,23 +9,23 @@ image:
   
 ---
 
-I'm a higly experienced scientist and technology executive with a background in data science, information security, data center infrastructre, organziation leadership, and business strategy. My current interest in data science builds on this experiences for context relevant insights
+I'm a highly experienced scientist and technology executive with a background in data science, information security, data center infrastructre, organziation leadership, and business strategy. My current interest in data science builds on this experiences for context relevant insights
 
 ## Interests 
 My current projects in data science, machine learning, and data visualization.
 o _Data Visualization_ for insights into data stories.
     - Campaign Debate Speech.
-    - Supercomputer "Exascalar"
+    - Supercomputing "Exascalar"
 o _Machine learning_ for prediction and detection capabilities. 
-    - Privacy implications of OkCUpid data.
+    - Privacy implications of OkCupid data.
     - Fraud detection in ski-pass usage.
+    - Road-safety twitter-bot.
 o _Data Science_ for rigor and reproducible methods.
-    - fully published code and results on RPubs
+    - Published raw data, code, and results.
 
  
-
 ## Professional Background 
-For most of my career I worked at Intel Corporation, where I held a wide variety of technical, management, and leadership positions. Experience included: wafer-processing technology development, supplier management, product-development, data center and computing technology development, industry-consortium leadership, security and encryption technology development, and secure product-development lifecycle management.  
+For most of my career I worked at Intel Corporation, where I held a wide variety of technical, management, and leadership positions. These included anagement of large engineering groups and smaller "high-level IC" teams." I have a wide array of technical experience, including wafer-processing technology development, product development, data center cooling technology, and fundamental physics. Business relationships included supplier management, product-development, and industry-consortium leadership. My most recent experience was in security and encryption technology development and secure product-development lifecycle management.  
 
 ## Education  
 Ph.D in Physics at UC Berkeley. Postdoctoral research at the Ecole Polytechnique Fédérale de Lausanne (Switzerland) and Caltech.
