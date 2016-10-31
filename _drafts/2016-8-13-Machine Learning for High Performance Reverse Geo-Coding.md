@@ -15,12 +15,12 @@ Scalable high-performance alternatives to web-lookup and point-in poylgon comput
 
 This blog is a higher level summary of a more complete ["computed" blog on RPubs](http://rpubs.com/ww44ss/ML_ReverseGeo)
 
-###Problem Statement
+### Problem Statement  
 Reverse geo-coded GPS coordinates are useful in cases where GPS cordinates from, for instance, a tweet or photograph are to be assigned to a specific political bounday. While reverse-look up of coordinates can be done using various web-services, such as the Google Maps API, it takes on the order of 200msec per (latitude, longitude) pair, severely limiting computing throughput. In addition, only 2500 free queries per day are allowed, limiting the overall amount of data that can be processed.  
 The purpose here to improve dramatically computation times while meeting high ( ~ 98% ) accuracy.  
 
 
-#### A Note on Performance Measurements  
+#### A Note on Performance Measurements   
 Performance results can be difficult communicate because they have context only within specific definitions. In this case I standardized data collection as much as possible to ensure a level of comparability. Each measurements was taken in a standardized run framework where the data were divided into training and test data sets and then the modeling and prediction steps were individually timed.   
 In some cases these times timing measurements differ slightly from those time observed when computations were done in loops with varying numbers of data points.   
 For the API calls I used elapsed-time measurements since these better reflect actual usage.
@@ -352,12 +352,6 @@ decay.x <- 2e-4
 nn.model <- nnet(county.class ~., train.set[,-3], size = 12, rang = 0.02, decay = decay.x, maxit = 6000, softmax = TRUE, trace=FALSE) 
 {% endhighlight %}
 
-
-
-
-{% highlight r %}
-
-{% endhighlight %}
 
 ### Summary and Conclusions
 
