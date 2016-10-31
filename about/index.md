@@ -9,7 +9,7 @@ image:
   
 ---
 
-I'm a highly experienced scientist and technology executive with a background in data science, information security, data center infrastructre, organziation leadership, and business strategy. My current interest in data science builds on this experiences for context relevant insights
+I'm an experienced scientist and technology executive with a background in fundamental science, data science, information security, data center infrastructre, organziation leadership, and business strategy. My current interests build on this experience for rigorous, data-driven, and context relevant insights into the meaning(s) of data. 
 
 ## Interests 
 My current projects in data science, machine learning, and data visualization.
