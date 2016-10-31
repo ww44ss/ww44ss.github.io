@@ -13,6 +13,8 @@ date: 2016-08-15T08:08:50-04:00
 ### SUMMARY   
 Scalable high-performance alternatives to web-lookup and point-in poylgon computation are explored using counties in the state of Oregon as a test case. A Random Forest algorithm improves performance by ~ 10^4^ over web-based API look-ups while meeting >95% accuracy. 
 
+This blog is a higher level summary of a more complete ["computed" blog on RPubs](http://rpubs.com/ww44ss/ML_ReverseGeo)
+
 ###Problem Statement
 Reverse geo-coded GPS coordinates are useful in cases where GPS cordinates from, for instance, a tweet or photograph are to be assigned to a specific political bounday. While reverse-look up of coordinates can be done using various web-services, such as the Google Maps API, it takes on the order of 200msec per (latitude, longitude) pair, severely limiting computing throughput. In addition, only 2500 free queries per day are allowed, limiting the overall amount of data that can be processed.  
 The purpose here to improve dramatically computation times while meeting high ( ~ 98% ) accuracy.  
@@ -206,8 +208,6 @@ Since high accuracy is a goal and the accuracy of a random forest improves with 
 The above figure is produced by this code:
 
 
-
-
 {% highlight r %}
 ## set number of points to graph
 n.accuracy.points <- 21
@@ -287,7 +287,48 @@ for (jj in 1:n.accuracy.points){
 
 {% endhighlight %}
 
+Clearly n_train has a large influence on the accuracy of the model. Since accuracy near 98% is desired will choose about 15000 data points.
 
+Computation times (both total and normalize to the number of points) are shown below. Of interest, the modeling time per point for the randomForest is relatively constant.
+
+
+<figure>
+<a href="/images/blog/blog_rf_rev_geo_ntrain_tpt.png"><img src="/images/blog/blog_rf_rev_geo_ntrain_tpt.png" alt="image"></a>
+</figure>
+
+Indeed it is from this data that we can see the Random Forest has ~98% accuracy requirement and also delivers a substantial peformance improvement. 
+
+#### RandomForest performance benchmark
+
+To get formal results we can run this specific benchmark, again relying on `proc.time()` for our measurement.
+
+{% highlight r %}
+set.seed(8675309)
+## set number of trees
+ntree.x = 29
+
+## start model
+start.time <- proc.time()
+
+rf.model <- randomForest(county ~., train.set, ntree = ntree.x)
+
+rf.model.time <- (1000.*(proc.time() - start.time)[1]) %>% round(1) %>% as.numeric
+rf.model.thruput <- (nrow(train.set) / rf.model.time) %>% round(1)
+
+## start prediction
+start.time <- proc.time()
+
+predicted.test <- predict(rf.model, test.set)
+
+rf.predict.time <- (1000.*((proc.time() - start.time)[1])) %>% as.numeric %>% round(2)
+rf.predict.thruput <- (nrow(test.set) / rf.predict.time) %>% round(1)
+{% endhighlight %}
+
+In a standardized run it took 1110 msec to model the 14700 data points. Predictions made on the remaining 5000 data points took 40 msec, for a throughput of 125 data points per msec.
+
+Model accuracy is 97.6%.
+
+The results of applying a test data set to the model results are mapped below. For the randomForest errors appear on the boundaries of counties. No points lie within the interiors, thus being qualitatively different than errors of the API. Note that errors occur along both straight and complex boundaries, though error rates appear to increase with boundary complexity, as we might expect.
 
 
 {% highlight r %}
@@ -295,28 +336,40 @@ for (jj in 1:n.accuracy.points){
 {% endhighlight %}
 
 
+<figure>
+<a href="/images/blog/blog_rf_rev_geo_rf_acc.png"><img src="/images/blog/blog_rf_rev_geo_rf_acc.png" alt="image"></a>
+</figure>
+
+#### A note on other classification methods
+
+I tried using the `nnet` model available as a package on [CRAN](https://cran.r-project.org/). Generally the model was inferior. Performance was measured in the same way as for the randomForest. Model times were substantially longer than the randomForest. It took 152.08 seconds to model 10001 data points, while prediction of 5000 points took 30 msec. 
+
+The model was called with the statement below.
+
+{% highlight r %}
+decay.x <- 2e-4
+
+nn.model <- nnet(county.class ~., train.set[,-3], size = 12, rang = 0.02, decay = decay.x, maxit = 6000, softmax = TRUE, trace=FALSE) 
+{% endhighlight %}
+
+
+
+
 
 
 {% highlight r %}
 
 {% endhighlight %}
 
+### Conclusions
 
 
 
-{% highlight r %}
-
-{% endhighlight %}
-
-
-
-
-{% highlight r %}
-
-{% endhighlight %}
-
-
-
+method	accuracy (%)	predict.thruput	model.thruput
+nnet	94.60	166.67	0.07
+randomForest	97.60	125.00	13.20
+P-i-P	100.00	2.26	
+API	97.80	0.01	
 
 {% highlight r %}
 
