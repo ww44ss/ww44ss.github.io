@@ -355,26 +355,27 @@ nn.model <- nnet(county.class ~., train.set[,-3], size = 12, rang = 0.02, decay 
 
 
 
-
-
 {% highlight r %}
 
 {% endhighlight %}
 
-### Conclusions
+### Summary and Conclusions
 
+Various reverse-geocoding schemes were explored for both performance and accuracy, including API calls, P-i-P, and classification machine learning.
 
+The table below summarizes the results. Note that the P-i-P method is taken as the "grounded truth" and thus its accuracy is 100% by definition.
 
-method	accuracy (%)	predict.thruput	model.thruput
-nnet	94.60	166.67	0.07
-randomForest	97.60	125.00	13.20
-P-i-P	100.00	2.26	
-API	97.80	0.01	
+|method	 |accuracy (%)	|  prediction thruput (1/msec) |	modeling thruput (1/msec)  |
+|:------:|:------------:|:-----------------:|:----------------:|
+|nnet    |94.60     	|   166.67          |0.07              | 
+|randomForest |	97.60	| 125.00	| 13.20                |
+|P-i-P |	_100.00_	|2.26	| NA |
+|API	|97.80 |	0.01 |  NA |	
+{: .table}
 
-{% highlight r %}
+The randomForest model, trained on a data set derived from the slower P-i-P method, has an error rate of less than 2.5%, comparable to that of the Google Maps API, though with a throughput greater by over a factor of  10^4.
 
-{% endhighlight %}
-   
+As an extension of this work reverse geocoding models could be precomputed, saving the user of trouble of omputing them.    
 
 
    
