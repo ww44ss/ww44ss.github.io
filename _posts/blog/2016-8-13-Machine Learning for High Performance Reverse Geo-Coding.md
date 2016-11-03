@@ -11,7 +11,7 @@ date: 2016-08-15T08:08:50-04:00
 ---
 
 ### SUMMARY   
-Scalable high-performance alternatives to web-lookup and point-in poylgon computation are explored using counties in the state of Oregon as a test case. A Random Forest algorithm improves performance by \( 10^{4} \) over web-based API look-ups with an error rate of ~ 2.5 % (comparable to what is measured for the Google API). 
+Scalable high-performance alternatives to web-lookup and point-in poylgon computation are explored using counties in the state of Oregon as a test case. A Random Forest algorithm improves performance by \\( 10^{4} \\) over web-based API look-ups with an error rate of ~ 2.5 % (comparable to what is measured for the Google API). 
 
 This blog is a slightly higher level summary of a more complete [Machine Learning for High Performance Reverse-Geo-Coding](http://rpubs.com/ww44ss/ML_ReverseGeo)
 
