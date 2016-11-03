@@ -184,9 +184,7 @@ By changing `number.to.compute` we can get an idea of how the thruput of this me
 <a href="/images/blog/blog_rf_rev_geo_pip.png"><img src="/images/blog/blog_rf_rev_geo_pip.png" alt="image"></a>
 </figure>
 
-In practice, the P-i-P is much faster than the API call. Based on a stand-alone benchmark run, for 2000 points, the throughput is 2.26 points per msec - an improvement of roughly a factor of 400 over the API calls.
-
-Note, as the number of points gets large, the thruput (points/time) asymptotes to a constant value of roughly 5.0 points/msec.
+In practice, the P-i-P is much faster than the API call. As the number of points gets large, the thruput (points/time) asymptotes to a constant value of roughly 5.0 points/msec.
 
 #### accuracy of the google API
 
