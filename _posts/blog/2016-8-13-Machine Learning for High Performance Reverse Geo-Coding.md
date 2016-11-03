@@ -369,8 +369,7 @@ The table below summarizes the results. Note that the P-i-P method is taken as t
 |P-i-P |	_100.00_	|2.26	| NA |
 |API	|97.80 |	0.01 |  NA |	
 {: .table}
-
-The randomForest model, trained on a data set derived from the slower P-i-P method, has an error rate of less than 2.5%, comparable to that of the Google Maps API, though with a throughput greater by over a factor of  10^4.
+The randomForest model, trained on a data set derived from the slower P-i-P method, has an error rate of less than 2.5%, comparable to that of the Google Maps API, though with a throughput greater by over a factor of  \\( 10^{4} \\) .
 
 As an extension of this work reverse geocoding models could be precomputed, saving the user of trouble of omputing them.    
 
