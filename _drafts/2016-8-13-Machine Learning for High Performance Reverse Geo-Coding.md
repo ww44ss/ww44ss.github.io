@@ -13,7 +13,7 @@ date: 2016-08-15T08:08:50-04:00
 ### SUMMARY   
 Scalable high-performance alternatives to web-lookup and point-in poylgon computation are explored using counties in the state of Oregon as a test case. A Random Forest algorithm improves performance by ~ \\( 10^{4} \\) over web-based API look-ups while meeting \\(95\\)% accuracy. 
 
-This blog is a higher level summary of a more complete ["computed" blog on RPubs](http://rpubs.com/ww44ss/ML_ReverseGeo)
+You'll find more complete code on [Machine Learning for High Performance Reverse-Geo-Coding](http://rpubs.com/ww44ss/ML_ReverseGeo) published on RPubs.
 
 ### Problem Statement  
 Reverse geo-coded GPS coordinates are useful in cases where GPS cordinates from, for instance, a tweet or photograph are to be assigned to a specific political bounday. While reverse-look up of coordinates can be done using various web-services, such as the Google Maps API, it takes on the order of 200msec per (latitude, longitude) pair, severely limiting computing throughput. In addition, only 2500 free queries per day are allowed, limiting the overall amount of data that can be processed.  
