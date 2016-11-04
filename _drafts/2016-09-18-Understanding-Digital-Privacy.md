@@ -23,7 +23,6 @@ library(okcupiddata)
 library(randomForest)
 library(gbm)
 
-```
 
 # Introduction
 
