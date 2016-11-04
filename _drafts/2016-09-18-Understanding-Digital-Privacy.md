@@ -12,8 +12,8 @@ date: 2016-09-18T08:08:50-04:00
 
 This computation uses these packages:
 
-{% endhighlight %}
 
+{% highlight r %}
 library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
@@ -22,7 +22,7 @@ library(gridExtra)
 library(okcupiddata)
 library(randomForest)
 library(gbm)
-
+{% endhighlight %}
 
 # Introduction
 
