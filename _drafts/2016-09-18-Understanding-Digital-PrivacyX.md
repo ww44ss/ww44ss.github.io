@@ -10,7 +10,12 @@ feature:
 date: 2016-09-18T08:08:50-04:00
 ---
 
-This computation uses these packages:
+
+
+{% highlight r %}
+knitr::opts_chunk$set(echo = FALSE, fig.width=7, fig.height=4.5, messages=FALSE, warning = FALSE, fig.align = 'center')
+options(scipen=999)
+{% endhighlight %}
 
 {% endhighlight %}
 
@@ -53,23 +58,9 @@ Data are cleaned and simplified for modeling in the following way:
 * incomes <= 20000 and > 150000 were excluded. Including this data resulted in poor performing models.  
 * a `log_income` is computed.  
 
-Here are the variable names of the raw data
-
-{% highlight r %}
+```{r, message=FALSE, warning=FALSE}
 colnames(profiles)
-{% endhighlight %}
 
-`
-##  [1] "age"         "body_type"   "diet"        "drinks"      "drugs"      
-##  [6] "education"   "ethnicity"   "height"      "income"      "job"        
-## [11] "last_online" "location"    "offspring"   "orientation" "pets"       
-## [16] "religion"    "sex"         "sign"        "smokes"      "speaks"     
-## [21] "status"      "essay0"
-`
-
-This cleaning method is a bit pedanttic, but in practice it was quicker to list everything out and then do modifications as necessary to make the models work.
-
-{% highlight r %}
 cleaned <- profiles %>% select(-essay0, -last_online, -sign)
 cleaned <- cleaned %>% filter(!is.na(income))
 cleaned <- cleaned %>% filter(!is.na(age))
@@ -77,52 +68,51 @@ cleaned <- cleaned %>% filter(!is.na(age))
 
 cleaned <- cleaned %>% as_data_frame
 
-
+## straighten into factors
 cleaned$body_type <- cleaned$body_type  %>% as.factor
-cleaned$diet 	  <- cleaned$diet %>% as.factor
-cleaned$drinks    <- cleaned$drinks %>% as.factor
+cleaned$diet <- cleaned$diet %>% as.factor
+cleaned$drinks <- cleaned$drinks %>% as.factor
 
 
-cleaned <- cleaned %>% 
-	mutate(education_simple = gsub(' [A-z /\\-\\.]*', '', education))
-cleaned$education_simple <- cleaned$education_simple %>% as.factor
-
+cleaned <- cleaned %>% mutate(education_simple = gsub(' [A-z /\\-\\.]*', '', education)) 
+cleaned$education_simple <- cleaned$education_simple %>% as.character %>% as.factor
 cleaned$education <- cleaned$education %>% as.factor
 
 
 cleaned$ethnicity <- gsub(',( [a-z_]*)', '', cleaned$ethnicity) %>% as.factor()
 
 
-cleaned$location  <- cleaned$location %>% as.factor
-cleaned$height    <- cleaned$height %>% as.factor
-
-cleaned$income    <- cleaned$income %>% as.character %>% as.numeric
-cleaned           <- cleaned %>% mutate(log_income = log10(income))
-
-cleaned$job       <- cleaned$job %>% as.factor
+cleaned$location <- cleaned$location %>% as.factor
+cleaned$height <- cleaned$height %>% as.factor
+cleaned$income <- cleaned$income %>% as.character %>% as.numeric
+cleaned <- cleaned %>% mutate(log_income = log10(income))
+cleaned$job <- cleaned$job %>% as.factor
 cleaned$offspring <- cleaned$offspring %>% as.factor
 cleaned$orientation <- cleaned$orientation %>% as.factor
-cleaned$pets      <- cleaned$pets %>% as.factor
-cleaned$religion  <- cleaned$religion %>% as.factor
-
-cleaned           <- cleaned %>% mutate(religious_affil = gsub(' [A-z ]*', '', religion))
+cleaned$pets <- cleaned$pets %>% as.factor
+cleaned$religion <- cleaned$religion %>% as.factor
+cleaned <- cleaned %>% mutate(religious_affil = gsub(' [A-z ]*', '', religion))
 cleaned$religious_affil <- cleaned$religious_affil %>% as.factor
 
-cleaned$sex       <- cleaned$sex %>% as.factor
-cleaned$smokes    <- cleaned$smokes %>% as.factor
-cleaned$status    <- cleaned$status %>% as.factor
-{% endhighlight %}
+cleaned$sex <- cleaned$sex %>% as.factor
+cleaned$smokes <- cleaned$smokes %>% as.factor
+cleaned$status <- cleaned$status %>% as.factor
+```
 
 
 # Inferring Income
 
 Since the point here is to understand what variables have greatest influence and not necessarily build a highly accurate model, I did not spend a lot of effort in feature engineering and instead modeled with just the base parameters listed below. 
 
-{% highlight r %}
+
+
+```{r, echo=FALSE, warning = FALSE, fig.align='center', tidy = TRUE, comment=""}
 ## select variables
 cleaned_sel <- cleaned %>% select(log_income, sex, drinks, religious_affil, education_simple, age, job, height) #drop ethnicity and offspring
 
+#print(c("cleaned before complete cases", nrow(cleaned_sel)))
 cleaned_sel <- cleaned_sel[complete.cases(cleaned_sel),]
+#print(c("cleaned after complete cases", nrow(cleaned_sel)))
 
 ## reduce span of incomes
 cleaned_sel <- cleaned_sel %>% filter(log_income < log10(200010))
@@ -132,19 +122,11 @@ cleaned_sel <- cleaned_sel %>% filter(log_income > log10(20010))
 cleaned_sel <- cleaned_sel %>% as_data_frame
 
 cleaned_sel %>% colnames
-{% endhighlight %}
-
-`
-[1] "log_income"       "sex"              "drinks"          
-[4] "religious_affil"  "education_simple" "age"             
-[7] "job"              "height"          
-`
-
-The span of incomes was reduced because including zero income and very high income degraded the model performance substantially. 
+```
 
 The data are split into __training__ and __test__ data sets using a well known methods. Here is a snapshot of the training data. 
 
-{% highlight r %}
+```{r, echo=1:7, warning = FALSE, fig.align='center', tidy = TRUE, comment=""}
 # split data into training and test data sets
 set.seed(8675309)
 data_cut <- sample(1: nrow(cleaned_sel), 0.6*nrow(cleaned_sel))
@@ -154,30 +136,12 @@ train_data <- cleaned_sel[data_cut,]
 test_data <- cleaned_sel[-data_cut,]
 
 train_data
-{% endhighlight %}
-
-
-`
-# A tibble: 3,349 × 8
-   log_income    sex     drinks religious_affil education_simple   age
-        <dbl> <fctr>     <fctr>          <fctr>           <fctr> <int>
-1    4.903090      m     rarely     agnosticism        graduated    59
-2    4.903090      m   socially           other        graduated    38
-3    5.000000      m   socially         atheism        graduated    43
-4    4.778151      m      often         atheism        graduated    28
-5    4.477121      m     rarely         atheism   graduated-year    50
-6    4.845098      m   socially         atheism        graduated    26
-7    4.903090      m   socially     catholicism        graduated    27
-8    4.602060      m   socially     agnosticism   graduated-year    26
-9    4.477121      m not at all    christianity             high    43
-10   5.176091      m     rarely           other        graduated    58
-# ... with 3,339 more rows, and 2 more variables: job <fctr>,
-#   height <fctr>
-`
+```
 
 ## Random-Forest Model
 
-{% highlight r %}
+```{r, echo=1:7, warning = FALSE, fig.align='center', tidy = TRUE}
+
 model.start <- Sys.time()
 income_model <- randomForest(log_income ~., train_data, importance = TRUE, ntree = 300)
 model.time <- Sys.time()-model.start
@@ -185,52 +149,44 @@ model.time <- Sys.time()-model.start
 grounded.truth <- test_data$log_income
 
 model.output <- predict(income_model, test_data %>% select(-log_income))
-{% endhighlight %}
 
-Overall it took 15.69 seconds to model 3349 points points. The variable importance is shown below as a % increase in mean square error, with larger values being more important.   
+```
 
-{% highlight r %}
+Overall it took `r model.time %>% round(3)` seconds to model `r nrow(train_data)` points. The variable importance is shown below as a % increase in mean square error, with larger values being more important.   
+
+```{r, echo=FALSE, warning = FALSE, fig.align='center', tidy = TRUE}
+
 # sort model importance
 importance(income_model, type=1)
-{% endhighlight %}
 
-`
-##                    %IncMSE
-## sex              18.416627
-## drinks            2.629561
-## religious_affil   8.079117
-## education_simple 39.414630
-## age              55.716573
-## job              74.630527
-## height            5.692647
-`
-
-Your job, age and education level have the greatest influence on income.  
-Another way to understand privacy implications is to plot predicted income (from the model) against actual income (known from test data) as below.
-
-{% highlight r %}
 plot_df <- cbind(grounded.truth, model.output) %>% as_data_frame
 plot_df$sample <- 1:nrow(plot_df)
 
 log_breaks = c(20000, 30000, 40000, 50000, 70000, 80000, 100000, 150000, 200000, 500000, 1000000)
 
 random_forest_plot <- ggplot(plot_df, aes(y = 10^(model.output), x = 10^(grounded.truth), group=grounded.truth)) + 
-    geom_boxplot(fill = "#CCCCCC")+
-    geom_jitter(pch=21, fill = "#77EE11", color = "#7788EE", width = .06, size = 0.8) +
-    scale_y_log10(breaks = log_breaks, labels=log_breaks) + 
-    scale_x_log10(breaks = log_breaks, labels=log_breaks) + 
-    ggtitle("randomForest income model") +
-    xlab("actual income") + 
-    ylab("inferred income") 
+geom_boxplot(fill = "#CCCCCC")+
+#geom_boxplot() + 
+geom_jitter(pch=21, fill = "#77EE11", color = "#7788EE", width = .06, size = 0.8) +
+scale_y_log10(breaks = log_breaks, labels=log_breaks) + 
+scale_x_log10(breaks = log_breaks, labels=log_breaks) + 
+ggtitle("randomForest income model") +
+xlab("actual income") + 
+ylab("inferred income") +
+geom_smooth()
 
 
+
+```
+
+Your job, age and education level have the greatest influence on income.  
+Another way to understand privacy implications is to plot predicted income (from the model) against actual income (known from test data) as below.
+
+```{r}
 random_forest_plot %>% print
+```
 
-{% endhighlight %}
-
-![center](/figures/2016-09-18-Understanding-Digital-Privacy/unnamed-chunk-8-1.png) 
-
-The graph shows both individual data points as well as a box-plot, showing the mean and standard deviation of the predictions. Clearly, the model does not predict income with high accuracy (the model is very basic and no doubt could be improved with added work). But, it does a reasonable job finding the trend. Without giving the model any information about income, it can, based on other information about you, at least reasonably guess your relative income. If you viewed your income as private, your privacy would be under attack.
+The graph shows both individual data points as well as a box-plot, showing the mean and standard deviation of the predictions. Clearly, the model does not predict income with high accuracy (the model is very basic and no doubt could be improved with added work). But, it does a reasonable job finding the trend. Without giving the model any information about income, it can, based on other information about you understand your relative income. If information about your income was someting you wanted to protect, your privacy would be under attack.
 
 Overall:   
 * Based on the given data, the `randomForest` model reproduces an income trend, though not with high accuracy. It would be sufficient to tell if you had high or low income, but not necessarily what level.   
@@ -242,16 +198,17 @@ Overall:
 
 The `gbm` model is another very commonly used regression model and provides good insight into the influence of variables.  
 
-{% highlight r %}
+```{r, echo=3:8, warning = FALSE, fig.align='center', tidy = TRUE}
+
 model.start <- Sys.time()
 income_model <- gbm(log_income ~ sex + drinks + religious_affil + education_simple + age + job + height, 
-    data = train_data, 
-    n.trees = 200, 
-    shrinkage = 0.001,
-    interaction.depth=5,
-    n.minobsinnode = 10,
-    bag.fraction = 0.1,
-    distribution = "gaussian")
+data = train_data, 
+n.trees = 200, 
+shrinkage = 0.001,
+interaction.depth=5,
+n.minobsinnode = 10,
+bag.fraction = 0.1,
+distribution = "gaussian")
 
 model.time <- Sys.time()-model.start
 
@@ -259,55 +216,51 @@ grounded.truth <- test_data$log_income
 
 model.output <- predict(income_model, test_data %>% select(-log_income), n.trees = 100)
 
-{% endhighlight %}
+```
 
-Overall it took 0.21 seconds to model 3349 points. This is a factor of roughly 60 times faster than the random forest. The relative influence of variables is shown below. 
+Overall it took `r model.time` seconds to model `r nrow(train_data)` points. The relative influence of variables is shown below. 
 
-{% highlight r %}
+```{r}
 relative.influence(income_model,n.trees = 100)
-{% endhighlight %}
+```
 
-`
-##              sex           drinks  religious_affil education_simple 
-##        0.4575169        0.0000000        6.6358175       55.3464937 
-##              age              job           height 
-##      104.8505992      235.1825972       53.0836639
-`
-
-The most important factors are your job, age, education, though interestingly in this case it finds height is also a predictor. 
 
 A plot of the predicted incomes against actual incomes show that in general the `gbm` does not do as well as the `randomForest` regression model. 
 
-{% highlight r %}
+```{r, echo=FALSE, warning = FALSE, fig.align='center', tidy = TRUE}
+
+
 plot_df <- cbind(grounded.truth, model.output) %>% as_data_frame
 plot_df$sample <- 1:nrow(plot_df)
 
 log_breaks = c(20000, 30000, 40000, 50000, 60000, 70000, 80000, 100000, 150000, 200000, 500000, 1000000)
 
 ggplot(plot_df, aes(y = 10^model.output, x = 10^grounded.truth, group=grounded.truth)) + 
-    geom_boxplot(fill = "#CCCCCC")+
-    geom_jitter(pch=21, fill = "#77EE11", color = "#7788EE", width = .06, size = 0.8) +
-    scale_y_log10(breaks = log_breaks, labels=log_breaks) + 
-    scale_x_log10(breaks = log_breaks, labels=log_breaks) + 
-    ggtitle("gbm income model") +
-    xlab("actual income") + 
-    ylab("inferred income") +
-    geom_smooth()
-{% endhighlight %}
+geom_boxplot(fill = "#CCCCCC")+
+#geom_boxplot() + 
+geom_jitter(pch=21, fill = "#77EE11", color = "#7788EE", width = .06, size = 0.8) +
+scale_y_log10(breaks = log_breaks, labels=log_breaks) + 
+scale_x_log10(breaks = log_breaks, labels=log_breaks) + 
+ggtitle("gbm income model") +
+xlab("actual income") + 
+ylab("inferred income") +
+geom_smooth()
 
 
-![center](/figures/2016-09-18-Understanding-Digital-Privacy/unnamed-chunk-11-1.png)
+
+```
 
 Again:  
-* Job, education, and age have predictive value in a gbm scenario.  This agrees with the finding of the `randomForest` and thus shows a kind of "robustness" of the power of certain variables in predicting others.   
+* Job, education, and age have predictive value in a gradient-boost model scenario.  This agrees with the finding of the `randomForest` and thus shows a kind of "robustness" of the power of certain variables in predicting others.   
 * Sex, drinking, religious_affiliation, and height have no influence.   
-* The gbm does a poorer job of predicting income than `randomForest` but nevertheless has some predictive value.   
+* The `gbm` does a poorer job of predicting income than `randomForest` but nevertheless has some predictive value.   
 
 # Inferring Age
 
 We construct an age model in the same way as above, though only for the `randomForest` case.
 
-{% highlight r %}
+```{r, echo=3, warning = FALSE, fig.align='center', tidy = TRUE}
+
 model.start <- Sys.time()
 age_model <- randomForest(age ~., train_data, importance = TRUE, ntree = 300)
 model.time <- Sys.time()-model.start
@@ -315,43 +268,65 @@ model.time <- Sys.time()-model.start
 grounded.truth <- test_data$age
 
 model.output <- predict(age_model, test_data %>% select(-age))
-{% endhighlight %}
 
-Overall it took 12.60 seconds to model 3349 points. The model importance is shown below.  
+```
+Overll it took `r model.time` seconds to model `r nrow(train_data)` points. The model importance is shown below.   
 
-{% highlight r %}
+```{r, echo=FALSE, warning = FALSE, fig.align='center', tidy = TRUE}
+
+# sort model importance
 importance(age_model, type=1)
-{% endhighlight %}
 
-`
-##                    %IncMSE
-## log_income       38.920995
-## sex               4.837325
-## drinks           19.695133
-## religious_affil  11.657625
-## education_simple 22.064568
-## job              36.017347
-## height            1.774081
-`
+plot_df <- cbind(grounded.truth, model.output) %>% as_data_frame
+plot_df$sample <- 1:nrow(plot_df)
 
-We can see that while the numerical accuracy of the age predictions is not great, it does accurately predict an age trend and thus is reasonably capable of reliably distinguishing something like an age-group. 
+log_breaks = c(20000, 30000, 40000, 50000, 70000, 80000, 100000, 150000, 200000, 500000, 1000000)
 
-![center](/figures/2016-09-18-Understanding-Digital-Privacy/unnamed-chunk-14-1.png)
+random_forest_plot <- ggplot(plot_df, aes(y = model.output, x = grounded.truth, group=grounded.truth)) + 
+geom_boxplot(fill = "#CCCCCC")+
+#geom_boxplot() + 
+geom_jitter(pch=21, fill = "#77EE11", color = "#7788EE", width = .3, size = 0.6) +
+#scale_y_log10(breaks = log_breaks, labels=log_breaks) + 
+#scale_x_log10(breaks = log_breaks, labels=log_breaks) + 
+ggtitle("OkCupid age model") +
+xlab("actual age") + 
+ylab("inferred age") +
+geom_smooth()
+
+
+
+```
+
+We can see that while the numerical accuracy of the age predictions is not high, it does accurately predict an age trend, capable of distinguishing something like an age-group with reasonable accuracy. 
+
+```{r}
+random_forest_plot %>% print
+```
 
 This means:  
 * Your income, job, education, drinking habits, and religious affiliation, when taken together, provide information about your age.  
 
 # Summary and Conclusions  
 In the age of heavy analytics and shared data, seemingly ancillary data, when combined with other data, can reveal information about us we had assumed was private.  
-We can see it is not just a single piece of information providing the lynch-pin in protecting our privacy, but rather an ensemble. This increases the difficulty of protecting your data. 
+We can see from the above it not just a single piece of information provides a lynch-pin in protecting our privacy, but rather an ensemble.  
 
-If we assume our income, for example, is private, but reveal our job, education, and age (as I have done in consumer surveys), it may be as though we have lost our privacy all the same (whether or not the model is actually built). 
+If we assume our income, for example, is private, but reveal our job, education, and age (as I have done in consumer surveys), perhaps it is as though we have lost our privacy all the same (whether or not the model is actually built). 
 
 What protections do we have? While worthy of another blog, I'll just list some brainstorm ideas here in case that takes a while. Note these are still to be evaluated.  
 
 Possible steps to control digital-privacy:  
 * Use dummy data. I noticed that the predictive models were thrown off when I included both the lower and highest income levels. It is imaginable that this data was less than reliable. Dummy data skews models.   
-* Understand what data are being collected and what can be inferred from it. That is easier said than done, but perhaps a kind of "dashboard" could be created or provided as a service. (buying diapers and baby stroller ->> baby, for example?). This could be promising since we have some evidence of "robustness" of variables independent of the model. 
+* Understand what data are being collected and what can be inferred from it. That is easier said than done, but perhaps we could create a kind of "dashboard" for folks. (buying diapers and baby stroller ->> baby, for example?) since above we have some evidence of this "robustness" independent of the model. 
 * Enable consumers to protect what can be modeled about them thru extensions of privacy laws. This is obviously problematic from an enforcement perspective. 
 * others???    
+
+
+   
+   
+
+  
+
+
+
+
 
