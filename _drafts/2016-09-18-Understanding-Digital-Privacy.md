@@ -59,11 +59,11 @@ colnames(profiles)
 {% endhighlight %}
 
 `
-##  [1] "age"         "body_type"   "diet"        "drinks"      "drugs"      
-##  [6] "education"   "ethnicity"   "height"      "income"      "job"        
-## [11] "last_online" "location"    "offspring"   "orientation" "pets"       
-## [16] "religion"    "sex"         "sign"        "smokes"      "speaks"     
-## [21] "status"      "essay0"
+##  [1] "age"         "body_type"   "diet"        "drinks"      "drugs"        
+##  [6] "education"   "ethnicity"   "height"      "income"      "job"          
+## [11] "last_online" "location"    "offspring"   "orientation" "pets"         
+## [16] "religion"    "sex"         "sign"        "smokes"      "speaks"       
+## [21] "status"      "essay0"   
 `
 
 This cleaning method is a bit pedanttic, but in practice it was quicker to list everything out and then do modifications as necessary to make the models work.

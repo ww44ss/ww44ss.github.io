@@ -134,9 +134,9 @@ cleaned_sel %>% colnames
 {% endhighlight %}
 
 `
-[1] "log_income"       "sex"              "drinks"          
-[4] "religious_affil"  "education_simple" "age"             
-[7] "job"              "height"          
+	   [1] "log_income"       "sex"              "drinks"
+       [4] "religious_affil"  "education_simple" "age"
+       [7] "job"              "height"          
 `
 
 The span of incomes was reduced because including zero income and very high income degraded the model performance substantially. 
@@ -157,21 +157,21 @@ train_data
 
 
 `
-# A tibble: 3,349 × 8
-   log_income    sex     drinks religious_affil education_simple   age
-        <dbl> <fctr>     <fctr>          <fctr>           <fctr> <int>
-1    4.903090      m     rarely     agnosticism        graduated    59
-2    4.903090      m   socially           other        graduated    38
-3    5.000000      m   socially         atheism        graduated    43
-4    4.778151      m      often         atheism        graduated    28
-5    4.477121      m     rarely         atheism   graduated-year    50
-6    4.845098      m   socially         atheism        graduated    26
-7    4.903090      m   socially     catholicism        graduated    27
-8    4.602060      m   socially     agnosticism   graduated-year    26
-9    4.477121      m not at all    christianity             high    43
-10   5.176091      m     rarely           other        graduated    58
-# ... with 3,339 more rows, and 2 more variables: job <fctr>,
-#   height <fctr>
+    # A tibble: 3,349 × 8
+       log_income    sex     drinks religious_affil education_simple   age
+            <dbl> <fctr>     <fctr>          <fctr>           <fctr> <int>
+    1    4.903090      m     rarely     agnosticism        graduated    59
+    2    4.903090      m   socially           other        graduated    38
+    3    5.000000      m   socially         atheism        graduated    43
+    4    4.778151      m      often         atheism        graduated    28
+    5    4.477121      m     rarely         atheism   graduated-year    50
+    6    4.845098      m   socially         atheism        graduated    26
+    7    4.903090      m   socially     catholicism        graduated    27
+    8    4.602060      m   socially     agnosticism   graduated-year    26
+    9    4.477121      m not at all    christianity             high    43
+    10   5.176091      m     rarely           other        graduated    58
+    # ... with 3,339 more rows, and 2 more variables: job <fctr>,
+    #   height <fctr>
 `
 
 ## Random-Forest Model
