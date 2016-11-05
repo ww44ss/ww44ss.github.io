@@ -155,7 +155,6 @@ test_data <- cleaned_sel[-data_cut,]
 train_data
 {% endhighlight %}
 
-
 `
     # A tibble: 3,349 × 8
        log_income    sex     drinks religious_affil education_simple   age
@@ -194,14 +193,14 @@ importance(income_model, type=1)
 {% endhighlight %}
 
 `
-##                    %IncMSE
-## sex              18.416627
-## drinks            2.629561
-## religious_affil   8.079117
-## education_simple 39.414630
-## age              55.716573
-## job              74.630527
-## height            5.692647
+    ##                    %IncMSE
+    ## sex              18.416627
+    ## drinks            2.629561
+    ## religious_affil   8.079117
+    ## education_simple 39.414630
+    ## age              55.716573
+    ## job              74.630527
+    ## height            5.692647
 `
 
 Your job, age and education level have the greatest influence on income.  
@@ -213,7 +212,8 @@ plot_df$sample <- 1:nrow(plot_df)
 
 log_breaks = c(20000, 30000, 40000, 50000, 70000, 80000, 100000, 150000, 200000, 500000, 1000000)
 
-random_forest_plot <- ggplot(plot_df, aes(y = 10^(model.output), x = 10^(grounded.truth), group=grounded.truth)) + 
+random_forest_plot <- plot_df %>% 
+	ggplot(aes(y = 10^(model.output), x = 10^(grounded.truth), group=grounded.truth)) + 
     geom_boxplot(fill = "#CCCCCC")+
     geom_jitter(pch=21, fill = "#77EE11", color = "#7788EE", width = .06, size = 0.8) +
     scale_y_log10(breaks = log_breaks, labels=log_breaks) + 
