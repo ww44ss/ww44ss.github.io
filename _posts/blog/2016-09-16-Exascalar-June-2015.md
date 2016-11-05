@@ -1,20 +1,20 @@
 ---
 layout: post
 title: "Exascalar June 2015"
-modified: "Exascalar, a visualization of the Supercomputing Top500, give insight into the scale and efficiency in supercomputing leardership."
+modified: 
 categories: blog
-excerpt: 
+excerpt: "Exascalar, a visualization of the Supercomputing Top500, give insight into the scale and efficiency in supercomputing leardership."
 tags: [Exascalar, Supercomputing, Top500, Efficiency, Performance, visualization]
 image:
 feature:
-date: 2016-05-24T08:08:50-04:00
+date: 2016-06-16 T08:08:50-04:00
 ---
 
 # Exascalar   
 Exascalar is a way to look at both the performance (as measured in Mflops by the [Top 500 Supercomputer List](http://www.top500.org)) and the efficiency (as measured in Mflops/kW by the [Green 500 Supercomputer List](http://www.green500.org) in the same analysis.  A [taxonomy of Exascalar](http://www.datacenterknowledge.com/archives/2013/01/28/the-taxonomy-of-exascalar/) highlights several key points of the graph. 
 
 
-# June 15 2016 Results    
+# June 2016 Results    
 
 The Exascalar graph shows little progress in the top of the June 2016 Edition of the Top500 list, but Exascalar does reveal some changes worth paying attention to. To emphasize these changes, the new and old list are superimposed.   
 
