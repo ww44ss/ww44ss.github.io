@@ -58,15 +58,15 @@ Here are the variable names of the raw data
 colnames(profiles)
 {% endhighlight %}
 
-`
-##  [1] "age"         "body_type"   "diet"        "drinks"      "drugs"        
-##  [6] "education"   "ethnicity"   "height"      "income"      "job"          
+{% highlight r %}
+##  [1] "age"         "body_type"   "diet"        "drinks"      "drugs"  
+##  [6] "education"   "ethnicity"   "height"      "income"      "job"           
 ## [11] "last_online" "location"    "offspring"   "orientation" "pets"         
 ## [16] "religion"    "sex"         "sign"        "smokes"      "speaks"       
 ## [21] "status"      "essay0"   
-`
+{% endhighlight %}
 
-This cleaning method is a bit pedanttic, but in practice it was quicker to list everything out and then do modifications as necessary to make the models work.
+This cleaning method is a bit pedantic, but in practice it was quicker to list everything out and then do modifications as necessary to make the models work.
 
 {% highlight r %}
 cleaned <- profiles %>% select(-essay0, -last_online, -sign)
@@ -129,15 +129,17 @@ cleaned_sel <- cleaned_sel %>% filter(log_income > log10(20010))
 
 
 cleaned_sel <- cleaned_sel %>% as_data_frame
+{% highlight r %}
 
-cleaned_sel %>% colnames
+Here are the columns of the cleaned and selected data
+
 {% endhighlight %}
+cleaned_sel %>% colnames
 
-`
 [1] "log_income"       "sex"              "drinks"          
 [4] "religious_affil"  "education_simple" "age"             
-[7] "job"              "height"          
-`
+[7] "job"              "height"           
+{% endhighlight %}
 
 The span of incomes was reduced because including zero income and very high income degraded the model performance substantially. 
 
@@ -151,28 +153,30 @@ data_cut <- sample(1: nrow(cleaned_sel), 0.6*nrow(cleaned_sel))
 ## split data
 train_data <- cleaned_sel[data_cut,] 
 test_data <- cleaned_sel[-data_cut,]
-
-train_data
 {% endhighlight %}
 
+Here is what the training data looks like
 
-`
-# A tibble: 3,349 × 8
-   log_income    sex     drinks religious_affil education_simple   age
-        <dbl> <fctr>     <fctr>          <fctr>           <fctr> <int>
-1    4.903090      m     rarely     agnosticism        graduated    59
-2    4.903090      m   socially           other        graduated    38
-3    5.000000      m   socially         atheism        graduated    43
-4    4.778151      m      often         atheism        graduated    28
-5    4.477121      m     rarely         atheism   graduated-year    50
-6    4.845098      m   socially         atheism        graduated    26
-7    4.903090      m   socially     catholicism        graduated    27
-8    4.602060      m   socially     agnosticism   graduated-year    26
-9    4.477121      m not at all    christianity             high    43
-10   5.176091      m     rarely           other        graduated    58
-# ... with 3,339 more rows, and 2 more variables: job <fctr>,
-#   height <fctr>
-`
+{% highlight r %}
+train_data
+
+
+# A tibble: 3,349 × 8  
+   log_income    sex     drinks religious_affil education_simple   age  
+        <dbl> <fctr>     <fctr>          <fctr>           <fctr> <int>  
+1    4.903090      m     rarely     agnosticism        graduated    59  
+2    4.903090      m   socially           other        graduated    38  
+3    5.000000      m   socially         atheism        graduated    43  
+4    4.778151      m      often         atheism        graduated    28  
+5    4.477121      m     rarely         atheism   graduated-year    50  
+6    4.845098      m   socially         atheism        graduated    26   
+7    4.903090      m   socially     catholicism        graduated    27  
+8    4.602060      m   socially     agnosticism   graduated-year    26  
+9    4.477121      m not at all    christianity             high    43  
+10   5.176091      m     rarely           other        graduated    58   
+# ... with 3,339 more rows, and 2 more variables: job <fctr>,   
+#   height <fctr>   
+{% endhighlight %}
 
 ## Random-Forest Model
 
@@ -188,12 +192,12 @@ model.output <- predict(income_model, test_data %>% select(-log_income))
 
 Overall it took 15.69 seconds to model 3349 points points. The variable importance is shown below as a % increase in mean square error, with larger values being more important.   
 
+Here is the importanve of the income model.
+
 {% highlight r %}
 # sort model importance
 importance(income_model, type=1)
-{% endhighlight %}
 
-`
 ##                    %IncMSE
 ## sex              18.416627
 ## drinks            2.629561
@@ -202,7 +206,7 @@ importance(income_model, type=1)
 ## age              55.716573
 ## job              74.630527
 ## height            5.692647
-`
+{% endhighlight %}
 
 Your job, age and education level have the greatest influence on income.  
 Another way to understand privacy implications is to plot predicted income (from the model) against actual income (known from test data) as below.
