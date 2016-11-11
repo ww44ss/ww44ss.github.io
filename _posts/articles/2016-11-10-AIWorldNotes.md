@@ -62,15 +62,19 @@ As [Crowdflower](https://www.crowdflower.com/) CEO Robin Bordoli highlighted, yo
 
 # AI for everyone
  
-While big iron, fancy algorithms, and slick implementatations of AI seem to attract most of the press, there is a huge market at lower price points for AI tools. A cool example of this "AI for everyone" was the robot ATHENA. It's an AI assistant based on a Roomba and a table computer. It is capable of fairly simple tasks, such as guiding a person form one point to another in an office environment. I imagine the utility of this kind of solution in a doctor's office. As things currently stand, a nurse generally guides me from the front office to an exam room. While I enjoy the company, it's a low value task that, in principle, ties-up the nursing staff from doing more "high value" activities. For instance, by freeing of the "guide" task, they might be able to spend an extra few minutes with each patient in the exam room, doing actual medicine. 
+While big iron, fancy algorithms, and slick implementatations of AI seem to attract most of the press, there is a huge market at lower price points for AI tools. This is an example of the "train in the cloud, model on the device" approach advocated by most of the attendees. This has been enabled by the growin gcapability of the computing chips in all our devices. 
+
+A cool example of this "AI for everyone" was the robot ATHENA. It's an AI assistant based on a hacked Roomba for mobility, and a table computer for human interface. It's capable of simple but important autonomous tasks, such as guiding a person form one point to another in an office environment. When I saw this demonstrated, I immediately imagined the utility in a doctor's office. As things currently stand, a nurse generally guides me from the front office to an exam room, where the patient degowns, etc while the nurse waits patiently outside. Guiding someone around an office is a low value task that, in principle, ties-up the nursing staff from doing more "high value" activities such as spending time with patients. This is exactly what AI should do - free us up for more important work. 
 
 Here's a short video clip for your entertainment...
 
-![center](/figures/2016-11-10-AIWorldNotes/IMG_8907.TRIM.m4v) 
+<a href="http://www.youtube.com/watch?v=HCsNnW5etBY
+" target="_blank"><img src="http://img.youtube.com/vi/HCsNnW5etBY/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 # Summary
 
-AI is exploding. Many of the conferees spoke of the AI-desert, the period of time between the 1970's, when the promises of AI made mathematical sense, but could not be supported in practice by the primitive computing hardware, to 2010, when computing price and performance started coming in line.  It really is "AI-first".
+AI is exploding. Many of the conferees spoke of the AI-desert, the period of time starting in the 1970's, when the promises of AI made mathematical-sense, but could not be supported in practice. The cloud computing revolution, with ready access to powerful handsets than can support local prediciton model computation, and cloud computing data centers, which can support the massive computations necessary to develop and fit the models to huge amounts of data, have made the difference. It really is "AI-first".
 
 
 
