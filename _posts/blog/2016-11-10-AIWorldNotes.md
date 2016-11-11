@@ -39,11 +39,11 @@ What\'s astounding is that capablities behind these tools are now within reach o
 I recommend you sign up for a demo account and then head straight over to training. With just a few keystrokes you'll have your own AI bot (though meaningful training takes much more).
 
 
-# "Big Data"
+# "Big Data" as an enabler of AI
 
 Kogentix co-founder Boyd Davis emphasized the need for "data collection at scale". 
 
-Moore's law has made computing resources available at scale and at low coast. Open source software, such as  Linux, has made software available and affordable. And hardware initiatives, like the [Open Compute Project](http://www.opencompute.org/) have improved platform performance and reduced costs for scale deployment. 
+Moore's law has made computing resources available at scale and at low coast. Open source software, such as  Linux, has made software available and affordable. And hardware initiatives, like the [Open Compute Project](http://www.opencompute.org/) have improved platform performance and reduced costs. 
 
 
 AI relies on Machine learning to train algorithms for data reduction and predictions. "This call may be recorded" on a help line likely means more data for an AI to train itself in how to respond to customer needs. The cosst of this analysis was We can leverage the massive parallel compute capability of Apache Hadoop, storage substrates, Spark for analytics, and SQL interfaces. The role of Kogentix and Cloudera big data solutions are to knit that all together into an open and accessible platform for AI.
