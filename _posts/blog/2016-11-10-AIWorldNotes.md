@@ -3,7 +3,7 @@ layout: post
 title: "Notes from 2016 AI World"
 excerpt: "AI poised for explosive growth"
 categories: articles
-tags: [AI, AI World, blog, Kogentix, Crowdflower, Inbenta, datamonster]
+tags: [AI, AI World, blog, Kogentix, Crowdflower, artificial intelligence]
 image:
   feature: 
   credit: 
@@ -34,7 +34,7 @@ Interfaces have proven to be technology distruptors, and AI is no different. The
 
 What\'s astounding is that capablities behind these tools are now within reach of the "regular" enterprise. In fact, if you're not already deploying some form of AI, you're behind. Intelligent bots reviewed in a special conference session showed tremedous progress. You can get your own demo account at [API.AI](https://api.ai/) and play around. The design of the programming interface follows the natural flow:
 
-#### _NLP  -> "Intent" -> "Concepts" -> "Entities" -> "Fulfillment"_
+##### _NLP  -> "Intent" -> "Concepts" -> "Entities" -> "Fulfillment"_
 
 I recommend you sign up for a demo account and then head straight over to training. With just a few keystrokes you'll have your own AI bot (though meaningful training takes much more).
 
@@ -71,7 +71,9 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 # Summary
 
-AI is exploding. Many of the conferees spoke of the AI-desert, the period of time starting in the 1970's, when the promises of AI made mathematical-sense, but could not be supported in practice. The cloud computing revolution, with ready access to powerful handsets than can support local prediciton model computation, and cloud computing data centers, which can support the massive computations necessary to develop and fit the models to huge amounts of data, have made the difference. It really is "AI-first".
+Many of the conferees spoke of the AI-desert, the period of time starting in the 1970's, when the promises of AI made mathematical-sense, but could not be supported from a computational perspective in practice. 
+
+No longer. AI is exploding. The cloud computing revolution, with ready access to powerful handsets than can support local prediction computation, and cloud data centers, which can support the massive computations necessary to develop and fit models to huge amounts of data, have made the difference. It really is an "AI-first" world.
 
 
 
