@@ -34,7 +34,7 @@ Interfaces have proven to be technology distruptors, and AI is no different. The
 
 What\'s astounding is that capablities behind these tools are now within reach of the "regular" enterprise. In fact, if you're not already deploying some form of AI, you're behind. Intelligent bots reviewed in a special conference session showed tremedous progress. You can get your own demo account at [API.AI](https://api.ai/) and play around. The design of the programming interface follows the natural flow:
 
-##### _NLP  -> "Intent" -> "Concepts" -> "Entities" -> "Fulfillment"_
+![center](/figures/2016-11-10-AIWorldNotes/concept_flow.png) 
 
 I recommend you sign up for a demo account and then head straight over to training. With just a few keystrokes you'll have your own AI bot (though meaningful training takes much more).
 
@@ -55,7 +55,12 @@ At today's cost, AI is more accessible than ever. The current threshold, within 
 
 # Success Depends on Data, ML, and HITL
 
-As [Crowdflower](https://www.crowdflower.com/) CEO Robin Bordoli highlighted, you need to pay attention to the full development cycle to deliver the highest quality AI solution. This starts with the training data. As I've emphasized in some of my blogs, the quantity of training data (both in numbers and in quality) plays a strong role in model accuracy and resiliency. The next step is carefully chosen ML algorithms. And the final step, which I agree is also essential, is what he called "Human in the Loop" (HITL) especially as alorithms are first brough on line, having people both checking results, and being available for seemless escalation of customer concerns in case the algorithm can't decipher the proper intent or concepts, is essential. 
+As [Crowdflower](https://www.crowdflower.com/) CEO Robin Bordoli highlighted, you need to pay attention to the full development cycle to deliver the highest quality AI solution. This starts with the training data. As I've emphasized in some of my blogs, the quality of training data plays a strong role in model accuracy and resiliency. The next step is carefully chosen ML algorithms to do correct classification. And the final step, also essential, is what he called "Human in the Loop" (HITL) especially as alorithms are first brought on line, having people both checking results, and being available for seemless escalation of customer concerns in case the algorithm can't decipher the proper intent or concepts, is essential. 
+
+I took the liberty of illustrating these concepts - similar to the famous data science Venn diagram - with my interepretations as below (I'd be interested in your comments/feedback of your impression of this). 
+
+![center](/figures/2016-11-10-AIWorldNotes/AI_Venn.png) 
+
 
 # AI for everyone
  
