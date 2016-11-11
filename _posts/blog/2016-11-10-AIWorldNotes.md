@@ -14,8 +14,11 @@ share: true
 
 # Summary
 AI World 2016 was a great conference - at least from my perspective one of the mosst imformative I have attended in years. Whether from bots, to security applications, business strategy need to move:
+
 - AI is the new user interface
+
 - Bots are the new apps
+
 - From "mobile-first" to "AI-first"
 
 
