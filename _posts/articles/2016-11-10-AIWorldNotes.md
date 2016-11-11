@@ -31,13 +31,7 @@ Interfaces have proven to be technology distruptors, and AI is no different. The
 
 What\'s astounding is that capablities behind these tools are now within reach of the "regular" enterprise. In fact, if you're not already deploying some form of AI, you're behind. Intelligent bots reviewed in a special conference session showed tremedous progress. You can get your own demo account at [API.AI](https://api.ai/) and play around. The design of the programming interface follows the natural flow:
 
-
-h3 {
-text-align: center;
-}
-
-<h3>NLP  --> "Intent" --> "Concepts" --> "Entities" --> "Fulfillment"</h3>
-
+#### _NLP  -> "Intent" -> "Concepts" -> "Entities" -> "Fulfillment"_
 
 I recommend you sign up for a demo account and then head straight over to training. With just a few keystrokes you'll have your own AI bot (though meaningful training takes much more).
 
