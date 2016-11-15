@@ -250,7 +250,7 @@ end.line <- "</.{1,2}>$"
     yo
 {% endhighlight %}
  
-gives the raw data. And below we can 
+gives the raw data. And below we can quickly step thru the lines
 
 {% highlight r %}
 start.line <- "^.*?>"
@@ -264,7 +264,7 @@ end.line <- "</.{1,2}>$"
     yo
 {% endhighlight %}
 
-
+on this iteration we discover the problem is with the third line. 
 
 {% highlight r %}
 start.line <- "^.*?>"
@@ -277,5 +277,25 @@ end.line <- "</.{1,2}>$"
    #str_replace("\"", "") %>% 
     yo
 {% endhighlight %}
+
+And beyond this point it is easy to correct the `end.line` regular expression and prove that things are working again as they should. 
+
+{% highlight r %}
+start.line <- "^.*?>"
+end.line <- "</.{1,3}>$"
+
+#matches <- 
+    matches %>% 
+    str_replace(start.line, "") %>%
+    str_replace(end.line, "") %>%
+    str_replace("\"", "") %>% 
+    yo
+{% endhighlight %}
+
+The final step is to remove all the comments and you're back and running. 
+
+#END NOTE
+
+So there you have it. yo is available from the link above. For a humorous touch, I also added the same functionality for `ruhroh` and `doh` in the yo package. So try it out. 
 
 
