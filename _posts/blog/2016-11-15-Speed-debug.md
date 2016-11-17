@@ -282,7 +282,7 @@ on this iteration we discover the problem is with the third line.
     yo
 {% endhighlight %}
 
-And beyond this point it is easy to correct the `end.line` regular expression and prove that things are working again as they should. 
+And beyond this point it is easy to correct the regular expression and prove that things are working again as they should. 
 
 {% highlight r %}
 #matches <- 
