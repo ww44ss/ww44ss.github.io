@@ -51,7 +51,7 @@ devtools::install_github("ww44ss/yo")
 library(yo)
 {% endhighlight %}
 
-
+### raw data
 
 Here's some html data from a public-facing web-page. I wish to extract relevant snowfall data. (Sorry, I know this is a lot of _stuff_ but it's faster to blog, and I'd argue better, just to copy from a real thing I'm working on rather than make up some contrived example.) I've put the data in a form that can be copied directly into a console.
 
@@ -156,6 +156,8 @@ If you've copied correctly the first few lines of the output should look like:
 [6] "</div>" 
 {% endhighlight %}
 
+### extract relevant info
+
 The information we seek is on only a few of these lines, which we can extract by selecting appropriate headers, like this:
 
 {% highlight r %}
@@ -190,6 +192,7 @@ resulting in the following lines of text (abbreviated).
 ...
 {% endhighlight %}
 
+### refining the data
 
 Now we just need to pull out the data. We can do this using regular expressions. 
 
@@ -219,17 +222,17 @@ Which gives the following data output (abbreviated).
 ... 
 {% endhighlight %}
 
-#USING yo TO SPEED UP DEBUG
+# USING yo TO SPEED UP DEBUG
 
 Let's assume at some point I discover a problem with the last code chunk. (I have made a small change to the code chunk below, but it could just as easily be a change to the input data giving an error).
 
 {% highlight r %}
 matches <- 
-matches %>% 
-str_replace("^.*?>", "") %>%
-str_replace("</.{1,2}>$", "") %>%
-str_replace("\"", "") %>%
-yo
+    matches %>% 
+    str_replace("^.*?>", "") %>%
+    str_replace("</.{1,2}>$", "") %>%
+    str_replace("\"", "") %>%
+    yo
 {% endhighlight %}
 
 Now the data are suddenly incorrect (the text at the end of some lines is not being replaced). 
@@ -246,61 +249,46 @@ Now the data are suddenly incorrect (the text at the end of some lines is not be
 So how does yo debug this? Well we can simply sequence backward in the piped-chain to find out... (note that I have also commented out the first line, this is optional but sends the output to the terminal for easier examination)
 
 {% highlight r %}
-start.line <- "^.*?>"
-end.line <- "</.{1,2}>$"
-
 #matches <- 
-matches %>% 
-#str_replace(start.line, "") %>%
-#str_replace(end.line, "") %>%
-#str_replace("\"", "") %>% 
-yo
+    matches %>% 
+   #str_replace("^.*?>", "") %>%
+   #str_replace("</.{1,2}>$", "") %>%
+   #str_replace("\"", "") %>% 
+    yo
 {% endhighlight %}
 
 gives the raw data. And below we can quickly step thru the lines
 
 {% highlight r %}
-start.line <- "^.*?>"
-end.line <- "</.{1,2}>$"
-
 #matches <- 
-matches %>% 
-str_replace(start.line, "") %>%
-#str_replace(end.line, "") %>%
-#str_replace("\"", "") %>% 
-yo
+    matches %>% 
+    str_replace("^.*?>", "") %>%
+   #str_replace("</.{1,2}>$", "") %>%
+    yo
 {% endhighlight %}
 
 on this iteration we discover the problem is with the third line. 
 
 {% highlight r %}
-start.line <- "^.*?>"
-end.line <- "</.{1,2}>$"
-
 #matches <- 
-matches %>% 
-str_replace(start.line, "") %>%
-str_replace(end.line, "") %>%
-#str_replace("\"", "") %>% 
-yo
+    matches %>% 
+    str_replace("^.*?>", "") %>%
+    str_replace("</.{1,2}>$", "") %>%
+    yo
 {% endhighlight %}
 
 And beyond this point it is easy to correct the `end.line` regular expression and prove that things are working again as they should. 
 
 {% highlight r %}
-start.line <- "^.*?>"
-end.line <- "</.{1,3}>$"
-
 #matches <- 
-matches %>% 
-str_replace(start.line, "") %>%
-str_replace(end.line, "") %>%
-str_replace("\"", "") %>% 
-yo
+    matches %>% 
+    str_replace("^.*?>", "") %>%
+    str_replace("</.{1,3}>$", "") %>%
+    yo
 {% endhighlight %}
 
 The final step is to remove all the comments and you're back and running. 
 
-#END NOTE
+# END NOTE
 
 So there you have it. yo is available from the link above. For a humorous touch, I also added the same functionality for `ruhroh` and `doh` in the yo package. So try it out!!
