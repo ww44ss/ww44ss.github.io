@@ -156,20 +156,47 @@ If you've copied correctly the first few lines of the output should look like:
 [6] "</div>" 
 {% endhighlight %}
 
-The relevant information is on only a few of these lines, which we can extract by selecting appropriate headers, like this:
+The information we seek is on only a few of these lines, which we can extract by selecting appropriate headers, like this:
 
 {% highlight r %}
 ## get snowfall related info by first defining string matches for relevant lines
 match.strings <- c(
-"Snow Conditions",
-"<h2>",
-"<p>",
-"<div class=\"key\">",
-"<div class=\"value\">")
+    "Snow Conditions",
+    "<h2>",
+    "<p>",
+    "<div class=\"key\">",
+    "<div class=\"value\">")
 
-matches <- grep(paste(match.strings,collapse="|"), snowfallraw, value=TRUE) %>% 
-str_trim %>%
-yo
+matches <- 
+    grep(paste(match.strings,collapse="|"), snowfallraw, value=TRUE) %>% 
+    str_trim %>%
+    yo
 {% endhighlight %}
 
+resulting in the following lines of text (abbreviated).
 
+{% highlight r %}
+[1] "<h1 class=\"section-header\">Snow Conditions</h1>"                                  
+[2] "<h2>Mid Mountain Snowfall</h2>"                                                     
+[3] "<p>Snowfall measured at 7,300' near the top of the Sunrise Express lift</p>"        
+[4] "<div class=\"key\">0\"</div>"                                                       
+[5] "<div class=\"value\">since 3pm yesterday</div>"                                     
+[6] "<div class=\"key\">0\"</div>"                                                       
+[7] "<div class=\"value\">24 Hour</div>"                                                 
+[8] "<div class=\"key\">0\"</div>"                                                       
+[9] "<div class=\"value\">3 Day</div>"                                                   
+[10] "<div class=\"key\">0\"</div>"                                                       
+[11] "<div class=\"value\">7 Day</div>"                                                   
+...
+% endhighlight %}
+
+Now we just need to pull out the data. We can do this using regular expressions. 
+
+{% highlight r %}
+matches <- 
+    matches %>% 
+    str_replace("^.*?>", "") %>%
+    str_replace("</.{1,3}>$", "") %>%
+    str_replace("\"", "") %>%
+    yo
+{% endhighlight %}
