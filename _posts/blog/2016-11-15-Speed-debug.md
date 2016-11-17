@@ -29,13 +29,13 @@ output_data <- input_data %>%
 
 With some thought, it can read as a nearly-natural sentence, making the program more interpretable by that most-important-other-person-to-read-your-code, that is, future-you. And creating easily interpretable code can reduce the amount of commenting you need to add to your programs.
 
-#WHAT'S THE PROBLEM?
+# WHAT'S THE PROBLEM?
 
 The problem with piped commands occurs, at least for me, when I've already got the chain working once, and then something changes (either in the input data or the desired outcome) that causes me to go back and modify either the functions or the instructions. For instance, in the above example, to check the output of `function1` I'd' need to add comments to each function line below it, and also modify the pipe at the end of the line.
 
 It's a lot of nuissance doing that typing. Or at least it's 'more typing than you need to do and more than I care to do. 
 
-#LET'S LOOK AT A REAL EXAMPLE
+# LET'S LOOK AT A REAL EXAMPLE
 
 To run this example you'll need the following libraries
 
@@ -201,3 +201,106 @@ matches <-
     str_replace("\"", "") %>%
     yo
 {% endhighlight %}
+
+Which gives the following data output (abbreviated).
+
+{% highlight r %}
+[1] "Snow Conditions"                                                             
+[2] "Mid Mountain Snowfall"                                                       
+[3] "Snowfall measured at 7,300' near the top of the Sunrise Express lift"        
+[4] "0"                                                                           
+[5] "since 3pm yesterday"                                                         
+[6] "0"                                                                           
+[7] "24 Hour"                                                                     
+[8] "0"                                                                           
+[9] "3 Day"                                                                       
+[10] "0"                                                                           
+[11] "7 Day"                                                                       
+... 
+{% endhighlight %}
+
+#USING yo TO SPEED UP DEBUG
+
+Let's assume at some point I discover a problem with the last code chunk. (I have made a small change to the code chunk below, but it could just as easily be a change to the input data giving an error).
+
+{% highlight r %}
+matches <- 
+matches %>% 
+str_replace("^.*?>", "") %>%
+str_replace("</.{1,2}>$", "") %>%
+str_replace("\"", "") %>%
+yo
+{% endhighlight %}
+
+Now the data are suddenly incorrect (the text at the end of some lines is not being replaced). 
+
+{% highlight r %}
+[1] "Snow Conditions"                                                             
+[2] "Mid Mountain Snowfall"                                                       
+[3] "Snowfall measured at 7,300' near the top of the Sunrise Express lift"        
+[4] "0</div>"                                                                     
+[5] "since 3pm yesterday</div>"                                                   
+...    
+{% endhighlight %}
+
+So how does yo debug this? Well we can simply sequence backward in the piped-chain to find out... (note that I have also commented out the first line, this is optional but sends the output to the terminal for easier examination)
+
+{% highlight r %}
+start.line <- "^.*?>"
+end.line <- "</.{1,2}>$"
+
+#matches <- 
+matches %>% 
+#str_replace(start.line, "") %>%
+#str_replace(end.line, "") %>%
+#str_replace("\"", "") %>% 
+yo
+{% endhighlight %}
+
+gives the raw data. And below we can quickly step thru the lines
+
+{% highlight r %}
+start.line <- "^.*?>"
+end.line <- "</.{1,2}>$"
+
+#matches <- 
+matches %>% 
+str_replace(start.line, "") %>%
+#str_replace(end.line, "") %>%
+#str_replace("\"", "") %>% 
+yo
+{% endhighlight %}
+
+on this iteration we discover the problem is with the third line. 
+
+{% highlight r %}
+start.line <- "^.*?>"
+end.line <- "</.{1,2}>$"
+
+#matches <- 
+matches %>% 
+str_replace(start.line, "") %>%
+str_replace(end.line, "") %>%
+#str_replace("\"", "") %>% 
+yo
+{% endhighlight %}
+
+And beyond this point it is easy to correct the `end.line` regular expression and prove that things are working again as they should. 
+
+{% highlight r %}
+start.line <- "^.*?>"
+end.line <- "</.{1,3}>$"
+
+#matches <- 
+matches %>% 
+str_replace(start.line, "") %>%
+str_replace(end.line, "") %>%
+str_replace("\"", "") %>% 
+yo
+{% endhighlight %}
+
+The final step is to remove all the comments and you're back and running. 
+
+#END NOTE
+
+So there you have it. yo is available from the link above. For a humorous touch, I also added the same functionality for `ruhroh` and `doh` in the yo package. So try it out!!
