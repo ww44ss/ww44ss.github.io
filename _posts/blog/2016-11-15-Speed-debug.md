@@ -148,7 +148,7 @@ snowfallraw[1:6]
 
 
 
-If you've copied correctly the first few lines of the output should look like:
+The first few lines of the output should look like:
 
 {% highlight r %}
 [1] "<h1 class=\"section-header\">Snow Conditions</h1>"                                      
@@ -197,7 +197,7 @@ resulting in the following lines of text (abbreviated).
 
 ### refining the data
 
-Now we just need to pull out the data. We can do this using regular expressions. 
+Now we just need to pull out the data using regular expressions. 
 
 {% highlight r %}
 matches <- 
@@ -208,7 +208,7 @@ matches <-
     yo
 {% endhighlight %}
 
-Which gives the following data output (abbreviated).
+Which results in the following contents for `matches` (abbreviated).
 
 {% highlight r %}
 [1] "Snow Conditions"                                                             
@@ -225,9 +225,11 @@ Which gives the following data output (abbreviated).
 ... 
 {% endhighlight %}
 
+__Success!!__ So things will work great.. until they don't.'
+
 # USING yo TO SPEED UP DEBUG
 
-Let's assume at some point I discover a problem with the last code chunk. (I have made a small change to the code chunk below, but it could just as easily be a change to the input data giving an error).
+Let's assume at some point I discover a problem with the last code chunk. (Below I have made a small change to the code chunk, but it could be a change to the input data giving an error in the same spot).
 
 {% highlight r %}
 matches <- 
@@ -238,7 +240,7 @@ matches <-
     yo
 {% endhighlight %}
 
-Now the data are suddenly incorrect (the text at the end of some lines is not being replaced). 
+Now the data are suddenly incorrect (the text at the end of some lines is not being replaced, as for example on line [4].  
 
 {% highlight r %}
 [1] "Snow Conditions"                                                             
@@ -249,7 +251,7 @@ Now the data are suddenly incorrect (the text at the end of some lines is not be
 ...    
 {% endhighlight %}
 
-So how does yo debug this? Well we can simply sequence backward in the piped-chain to find out... (note that I have also commented out the first line, this is optional but sends the output to the terminal for easier examination)
+So how does `yo` help to debug this? Using yo we can simply sequence backward in the piped-chain to find the problem by commenting out each line... (note in this case I have also commented out the first line, this is an optional step, but as it sends the output to the terminal for easier examination, it's also a useful trick.)
 
 {% highlight r %}
 #matches <- 
@@ -294,4 +296,4 @@ The final step is to remove all the comments and you're back and running.
 
 # END NOTE
 
-So there you have it. yo is available from the link above. For a humorous touch, I also added the same functionality for `ruhroh` and `doh` in the yo package. So try it out!!
+So there you have it. yo is available from the link above. It works especially well with tibbles.  For a personal touch, I also added the same functionality for `ruhroh` and `doh` in the yo package. I'll let you figure out which TV-characters these emulate.
