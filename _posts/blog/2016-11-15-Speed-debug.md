@@ -31,9 +31,9 @@ With some thought, it can read as a nearly-natural sentence, making the program 
 
 # WHAT'S THE PROBLEM?
 
-The problem with piped commands occurs, at least for me, when I've already got the chain working once, and then something changes (either in the input data or the desired outcome) that causes me to go back and modify either the functions or the instructions. For instance, in the above example, to check the output of `function1` I'd' need to add comments to each function line below it, and also modify the pipe at the end of the line.
+The problem with piped commands occurs, at least for me, when I've already got the chain working once, and then something changes (either in the input data or the desired outcome) that causes me to go back and modify either the functions or the instructions. For instance, in the above example, to check the output of `function1` I'd need to add comments to each function line below it, and also modify the pipe at the end of the line.
 
-It's a lot of nuissance doing that typing. Or at least it's 'more typing than you need to do and more than I care to do. 
+It's a lot of nuissance doing that typing. Or at least it's more typing than you need to do and more than I care to do. 
 
 # LET'S LOOK AT A REAL EXAMPLE
 
@@ -44,19 +44,20 @@ library(stringr)
 library(dplyr)
 
 if( !"yo" %in% installed.packages()[,1] ) {
-library(devtools)
-devtools::install_github("ww44ss/yo")
-}
+    library(devtools)
+    devtools::install_github("ww44ss/yo")
+    }
 
 library(yo)
 {% endhighlight %}
 
-### raw data
+### real raw data
 
-Here's some html data from a public-facing web-page. I wish to extract relevant snowfall data. (Sorry, I know this is a lot of _stuff_ but it's faster to blog, and I'd argue better, just to copy from a real thing I'm working on rather than make up some contrived example.) I've put the data in a form that can be copied directly into a console.
+Here's some html data from a public-facing web-page from which I wish to extract relevant snowfall-data. (Sorry, I know this is a lot of _stuff_ but it's faster to blog, and I'd argue also better, just to copy from a real thing I'm working on rather than making up some contrived example.) I've put the data in a form that can be copied directly into am R-program.
 
 {% highlight r %}
-snowfallraw <- c("<h1 class=\"section-header\">Snow Conditions</h1>", 
+snowfallraw <- 
+c("<h1 class=\"section-header\">Snow Conditions</h1>", 
 "", 
 "<div class=\"condition-intro\">", 
 "    <h2>Mid Mountain Snowfall</h2>", 
@@ -140,7 +141,9 @@ snowfallraw <- c("<h1 class=\"section-header\">Snow Conditions</h1>",
 "                <div class=\"value\">Snow Depth</div>", 
 "            </div>", "        </div>", "    </div>", "</div>", 
 "") 
-snowfallraw
+
+snowfallraw[1:6]
+
 {% endhighlight %}
 
 
@@ -156,7 +159,7 @@ If you've copied correctly the first few lines of the output should look like:
 [6] "</div>" 
 {% endhighlight %}
 
-### extract relevant info
+### extracting relevant info
 
 The information we seek is on only a few of these lines, which we can extract by selecting appropriate headers, like this:
 
