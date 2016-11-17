@@ -27,11 +27,11 @@ output_data <- input_data %>%
         function4(instructions4)
 {% endhighlight %}
 
-With some thought, it can read as a nearly-natural sentence, making the program more interpretable by that most important other person to read your programs - future-you. It reduces substnatially the amount of commenting you need to add. 
+With some thought, it can read as a nearly-natural sentence, making the program more interpretable by that most-important-other-person-to-read-your-code, that is, future-you. And creating easily interpretable code can reduce the amount of commenting you need to add to your programs.
 
 #WHAT'S THE PROBLEM?
 
-The problem occurs, at least for me, when I've already got the chain working once, and then something changes (either in the input data or the desired outcome) that causes me to go back and modify either the functions or the instructions. To check the output of `function1` I need to add comments to each function line below it, and also to the pipe at the end of the line.
+The problem with piped commands occurs, at least for me, when I've already got the chain working once, and then something changes (either in the input data or the desired outcome) that causes me to go back and modify either the functions or the instructions. For instance, in the above example, to check the output of `function1` I'd' need to add comments to each function line below it, and also modify the pipe at the end of the line.
 
 It's a lot of nuissance doing that typing. Or at least it's 'more typing than you need to do and more than I care to do. 
 
@@ -57,11 +57,13 @@ Here's some html data from a public-facing web-page. I wish to extract relevant 
 
 {% highlight r %}
 snowfallraw <- c("<h1 class=\"section-header\">Snow Conditions</h1>", 
-"", "<div class=\"condition-intro\">", 
+"", 
+"<div class=\"condition-intro\">", 
 "    <h2>Mid Mountain Snowfall</h2>", 
 "    <p>Snowfall measured at 7,300' near the top of the Sunrise Express lift</p>", 
 "</div>", 
-"", "<div class=\"current-sections conditions\">", 
+"", 
+"<div class=\"current-sections conditions\">", 
 "    <div class=\"section-block\">", 
 "        <div class=\"current-section condition first\">", 
 "            <div class=\"item\">", 
@@ -71,12 +73,16 @@ snowfallraw <- c("<h1 class=\"section-header\">Snow Conditions</h1>",
 "        <div class=\"current-section condition\">", 
 "            <div class=\"item\">", 
 "                <div class=\"key\">0\"</div>", 
-"                <div class=\"value\">24 Hour</div>", "            </div>", 
-"        </div>", "        <div class=\"current-section condition\">", 
+"                <div class=\"value\">24 Hour</div>", 
+"            </div>", 
+"        </div>", 
+"        <div class=\"current-section condition\">", 
 "            <div class=\"item\">", 
 "                <div class=\"key\">0\"</div>", 
-"                <div class=\"value\">3 Day</div>", "            </div>", 
-"        </div>", "        <div class=\"current-section condition\">", 
+"                <div class=\"value\">3 Day</div>", 
+"            </div>", 
+"        </div>", 
+"        <div class=\"current-section condition\">", 
 "            <div class=\"item\">", 
 "                <div class=\"key\">0\"</div>", 
 "                <div class=\"value\">7 Day</div>", 
@@ -108,15 +114,18 @@ snowfallraw <- c("<h1 class=\"section-header\">Snow Conditions</h1>",
 "        <div class=\"current-section condition\">", 
 "            <div class=\"item\">", 
 "                <div class=\"key\">0\"</div>", 
-"                <div class=\"value\">24 Hour</div>", "            </div>", 
+"                <div class=\"value\">24 Hour</div>", 
+"            </div>", 
 "        </div>", "        <div class=\"current-section condition\">", 
 "            <div class=\"item\">", 
 "                <div class=\"key\">0\"</div>", 
-"                <div class=\"value\">3 Day</div>", "            </div>", 
+"                <div class=\"value\">3 Day</div>", 
+"            </div>", 
 "        </div>", "        <div class=\"current-section condition\">", 
 "            <div class=\"item\">", 
 "                <div class=\"key\">0\"</div>", 
-"                <div class=\"value\">7 Day</div>", "            </div>", 
+"                <div class=\"value\">7 Day</div>", 
+"            </div>", 
 "        </div>", "    </div>", 
 "    <div class=\"section-block full first\">", 
 "        <div class=\"current-section condition\">", 
@@ -132,6 +141,35 @@ snowfallraw <- c("<h1 class=\"section-header\">Snow Conditions</h1>",
 "            </div>", "        </div>", "    </div>", "</div>", 
 "") 
 snowfallraw
+{% endhighlight %}
+
+
+
+If you've copied correctly the first few lines of the output should look like:
+
+{% highlight r %}
+[1] "<h1 class=\"section-header\">Snow Conditions</h1>"                                      
+[2] ""                                                                                       
+[3] "<div class=\"condition-intro\">"                                                        
+[4] "    <h2>Mid Mountain Snowfall</h2>"                                                     
+[5] "    <p>Snowfall measured at 7,300' near the top of the Sunrise Express lift</p>"        
+[6] "</div>" 
+{% endhighlight %}
+
+The relevant information is on only a few of these lines, which we can extract by selecting appropriate headers, like this:
+
+{% highlight r %}
+## get snowfall related info by first defining string matches for relevant lines
+match.strings <- c(
+"Snow Conditions",
+"<h2>",
+"<p>",
+"<div class=\"key\">",
+"<div class=\"value\">")
+
+matches <- grep(paste(match.strings,collapse="|"), snowfallraw, value=TRUE) %>% 
+str_trim %>%
+yo
 {% endhighlight %}
 
 
