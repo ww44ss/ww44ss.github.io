@@ -186,9 +186,10 @@ resulting in the following lines of text (abbreviated).
 [8] "<div class=\"key\">0\"</div>"                                                       
 [9] "<div class=\"value\">3 Day</div>"                                                   
 [10] "<div class=\"key\">0\"</div>"                                                       
-[11] "<div class=\"value\">7 Day</div>"                                                   
+[11] "<div class=\"value\">7 Day</div>" 
 ...
-% endhighlight %}
+{% endhighlight %}
+
 
 Now we just need to pull out the data. We can do this using regular expressions. 
 
