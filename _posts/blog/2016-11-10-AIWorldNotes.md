@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Notes from 2016 AI World"
-excerpt: "AI poised for explosive growth"
+title: "Six AI Challenges"
+excerpt: "Expanding on Google's Five AI Challenges'"
 categories: articles
-tags: [AI, AI World, blog, Kogentix, Crowdflower, artificial intelligence]
+tags: [AI, Five Challenges, blog, Google, artificial intelligence, security]
 image:
   feature: 
   credit: 
@@ -13,22 +13,15 @@ share: true
 ---
 
 # Summary
-AI World 2016 was a great conference - at least from my perspective one of the mosst imformative I have attended in years. Whether from bots, to security applications, business strategy need to move:
-
-- AI is the new user interface
-
-- Bots are the new apps
-
-- From "mobile-first" to "AI-first"
+Some thoughts on adding to Google's Five AI Challenges to include Security and reistance to hacking'
 
 
-# Artificial Intelligence as Distruptor
+# Google's Five Artificial Intelligence Challenges
 
-One of the most memorable moments in the AI World conference for me was when a [cartoon](https://goo.gl/images/hfQGz2) image (drawn by Chris Madden) was shown which declared, "The good news, Dave, is that the computer's passed the Turing Test. The bad news is that you've' failed."  
+__I'm a wonk.__ I know I'm a wonk because I have, printed and taped to the reading lamp in my study, a copy of "Google's Five AI Challenges". 
 
-The day of AI is upon us. Of course Siri, Google, Alexa, Cortana, and Samsung's newly acquired Bixby are the tools that come to mind. Already much better than when initially released, they are increasingly able to address a wide variety of natural language questions today. Pick 20 questions at random, and there's a finite probability they'll' get it right.  
+![center](/figures/2016-11-10-AIWorldNotes/concept_flow.png) 
 
-Interfaces have proven to be technology distruptors, and AI is no different. The tranistion from the typewriter to the PC caused a precipitous drop in typewriter sales. The transition to email and electronic documents led to the current y/y decline in surface mail volume. The smartphone revolution has caused PC sales to stagnate. The question is, what markets and job-roles will be disrupted by AI? Will the job of radiologist (one who interprets x-rays) really be obsolete in five years, as one presenter speculated?
 
 # Bots
 
