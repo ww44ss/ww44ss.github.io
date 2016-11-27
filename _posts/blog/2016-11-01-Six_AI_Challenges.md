@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Sixth Challenge for AI?"
-excerpt: "AI poised for explosive growth"
+excerpt: "Another challenge to add to Google's Five?"
 categories: articles
 tags: [AI, Google, Five AI Challenges, Aritifical Intelligence, Security, Sixth Challenge]
 image:

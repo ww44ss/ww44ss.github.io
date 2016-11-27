@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NLP meets Politics: Campaign Debate Rhetoric"
-excerpt: "NLP meets Presidential Politics"
+excerpt: "The 2015 Republican and Democratic Debates"
 modified:
 categories: blog
 excerpt:
