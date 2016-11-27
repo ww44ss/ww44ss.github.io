@@ -1,7 +1,7 @@
 ---
 layout: page
 title: about.me
-excerpt: "Experienced technology executive and scientist with a background in data science, information security, data center infrastructre, organziation leadership, and business strategy."
+excerpt: "Experienced technologist with problem-solving expertise in data science, information security, data center infrastructre, organization leadership, and business strategy."
 modified: 2016-10-29
 image:
   feature: Sisters1.JPG
@@ -9,7 +9,7 @@ image:
   
 ---
 
-I'm an experienced scientist and technology executive with a background in fundamental science, data science, information security, data center infrastructre, organziation leadership, and business strategy. My current interests build on this experience for rigorous, data-driven, and context relevant insights into the meaning(s) of data. 
+I'm an experienced technologist with an extensive background. I've solved difficult problems ranging from undamental science to data science, information security, data center infrastructre, organziation leadership, and business strategy. My current interests build on this experience to provide rigorous, data-driven, and context relevant insights into the meaning(s) of data. 
 
 ## Interests 
 Some current projects of interest in data science, machine learning, and data visualization.
