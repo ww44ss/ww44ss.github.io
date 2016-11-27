@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Notes from 2016 AI World"
+title: "Six Challenges for AI?"
 excerpt: "AI poised for explosive growth"
 categories: articles
 tags: [AI, Google, Five AI Challenges, Aritifical Intelligence, Security, Sixth Challenge]

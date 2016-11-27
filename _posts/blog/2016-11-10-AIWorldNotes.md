@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Six AI Challenges"
-excerpt: "Expanding on Google's Five AI Challenges'"
+title: "AI World 2016: Notes and Thoughts"
+excerpt: "My observations from AI World 2016"
 categories: articles
-tags: [AI, Five Challenges, blog, Google, artificial intelligence, security]
+tags: [AI, AI World, Big Data, CrownFlower, Kogentix, artificial intelligence, bots]
 image:
   feature: 
   credit: 
@@ -13,12 +13,9 @@ share: true
 ---
 
 # Summary
-Some thoughts on adding to Google's Five AI Challenges to include Security and reistance to hacking'
+I just attended AI World 2016, a truly state of the art conference on teh developing world of AI solutions.  
 
-
-# Google's Five Artificial Intelligence Challenges
-
-__I'm a wonk.__ I know I'm a wonk because I have, printed and taped to the reading lamp in my study, a copy of "Google's Five AI Challenges". 
+The conference covered a wide range of topics, from Bots, to Machine Intelligence, to Big Data-driven solutions. AI is trul the new interface, and the concept flow below, expanding on the simple Machine Learning "Training" and "Prediction" flows, highlight the new kinds of workloads and software models that need to be understood.
 
 ![center](/figures/2016-11-10-AIWorldNotes/concept_flow.png) 
 
