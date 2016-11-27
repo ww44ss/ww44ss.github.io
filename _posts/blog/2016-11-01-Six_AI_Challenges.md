@@ -13,7 +13,7 @@ share: true
 ---
 
 # Summary
-__I'm a wonk.__ I know it because I have, taped to the reading lamp in my study since early last summer, a copy of Google's Five AI Challenges. I look at it almost daily and it's really influenced my thinking about the very small scale AI solutions I'm developing.
+_I'm a wonk._ I know it because I have, taped to the reading lamp in my study since early last summer, a copy of Google's Five AI Challenges. I look at it almost daily and it's really influenced my thinking about the very small scale AI solutions I'm developing.
 
 ![center](/figures/2016-11-01-Six_AI_Challenges/2016-study.jpg) 
 
