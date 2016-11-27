@@ -2,12 +2,11 @@
 layout: post
 title: "NLP meets Politics: Campaign Debate Rhetoric"
 excerpt: "The 2015 Republican and Democratic Debates"
-modified:
-categories: blog
-excerpt:
+categories: articles
 tags: [NLP, R, RPubs, Debates, 2016, Election]
 image:
 feature:
+comments: TRUE
 date: 2016-06-02T08:08:50-04:00
 ---
 
