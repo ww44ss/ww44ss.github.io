@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "NLP meets Politics: Campaign Debate Rhetoric"
+excerpt: "NLP meets Presidential Politics"
 modified:
 categories: blog
 excerpt:
-tags: []
+tags: [NLP, R, RPubs, Debates, 2016, Election]
 image:
 feature:
 date: 2016-06-02T08:08:50-04:00

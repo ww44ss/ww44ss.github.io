@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Understanding Digital Privacy with OkCUpid"
+title: "Digital Privacy & the OkCupid dataset on CRAN"
 modified: 
 categories: blog
 excerpt: "Using the OkCupid dataset to understand privacy in the digital era"
-tags: [R, OkCupid, Privacy, Machine Learning, Random Forest, GBM]
+tags: [R, OkCupid, CRAN, Privacy, Machine Learning, Random Forest, GBM]
 image:
 feature:
 date: 2016-09-18T08:08:50-04:00
