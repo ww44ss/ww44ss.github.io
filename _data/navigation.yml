@@ -1,7 +1,13 @@
 # Site navigation links
 
-- title: Blog
-  url: /blog/
+- title: Thoughts
+  url: /thoughts/
+
+- title: R-Blog
+url: /blog/
+
+- title: Kaggle
+url: /kaggle/
 
 - title: About
   url: /about/
