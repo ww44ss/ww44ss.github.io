@@ -6,6 +6,9 @@
 - title: Kaggle
   url: /kaggle/
 
+- title: Thoughts
+  url: /thoughts/
+
 - title: About
   url: /about/
 
@@ -15,14 +18,8 @@
 - title: Github
   url: http://github.com/ww44ss
 
-- title: RPubs
-  url: http://rpubs.com/ww44ss
-
 - title: Linked In
   url: http://www.linkedin.com/in/winstonsaunders
-
-- title: Useful Links
-  url: /resources/
 
 - title: Search
   url: /search/

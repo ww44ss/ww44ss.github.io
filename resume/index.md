@@ -1,22 +1,22 @@
 ---
 layout: page
-title: Résumé
+title: resume
 search_omit: true
 ---
 
-# Winston A. Saunders
+## Winston A. Saunders
 
-## Summary  
+### Summary  
 
 I am an accomplished Ph.D. level data scientist with strong and active interest in developing MachineLearning and AI applications and techniques. My extensive experience in the technology business sector, product development, program management, information security, and customer interaction gives me a unique results-oriented perspective on developing data driven insights and applications. 
 
-## Seeking  
-Data scientist role in growing, data-oriented company that will value my analytical skills and leadership experience. 
+### Seeking  
+Leadership role in growing, data-oriented company. 
 
 ## Competencies  
 
 ##### Communication   
-I’m a clear and concise technical writer and have extensive experience as a public speaker. I'm active on social media through blogs and twitter.
+I’m a clear and concise technical writer. I have extensive experience as a public speaker and am active on social media via both blogging and twitter.
 
 ##### Interpersonal and Management Skills:  
 I work well with others, am sensitive to environment, and am experienced in coaching and motivation. I accept responsibility for outcomes, look for creative ways to manage conflict, and am confident in making timely decisions. 
@@ -24,13 +24,14 @@ I work well with others, am sensitive to environment, and am experienced in coac
 ##### Analytics:   
 I’ve been a data analyst my entire career. As a scientist I developed skills in automating data collection and analysis (primarily in FORTRAN, Basic, and _Pascal_). I have analysis experience with Matlab. I was a heavy _Mathematica_ user for both symbolic math, numerical analysis, and modeling. Currently I develop primarily in R and have passing familiarity with SQL and Python.  
 
-## Experience  
+### Experience  
 
 #### Data Science
-Self motivated and self-taught in Data Science and R. Demonstrated ability with projects in NLP, data visualization, geo-int, Kaggle. fraud detection, and more. JHSU Coursera Data Science Certification. 
+Data Science and R. Demonstrated ability with projects in NLP, data visualization, geographical data, Kaggle. fraud detection, and more. JHSU Coursera Data Science Certification. 
+Current projects include integration of client CRM and other org data in RapidMiner Studio. 
 
 #### The Green Grid  
-Board of Directors
+Board of Directors. (The Green Grid is the leading industry group for data center infrastructure efficiency). 
 
 #### Intel Corporation
 
