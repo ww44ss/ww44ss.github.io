@@ -1,25 +1,25 @@
 # Site navigation links
 
--- title: Blog
-url: /blog/
+- title: Blog
+  url: /blog/
 
 - title: About
-url: /about/
+  url: /about/
 
 - title: Resume
-url: /resume/
+  url: /resume/
 
 - title: Github
-url: http://github.com/ww44ss
+  url: http://github.com/ww44ss
 
 - title: RPubs
-url: http://rpubs.com/ww44ss
+  url: http://rpubs.com/ww44ss
 
 - title: Linked In
-url: http://www.linkedin.com/in/winstonsaunders
+  url: http://www.linkedin.com/in/winstonsaunders
 
 - title: Useful Links
-url: /resources/
+  url: /resources/
 
 - title: Search
-url: /search/
+  url: /search/
